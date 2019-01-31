@@ -1,0 +1,17 @@
+
+.container {
+  margin: 0 5rpx 5rpx 5rpx; }
+
+.picker {
+  margin-left: 35rpx;
+  font-size: 28rpx;
+  border-top: 1rpx solid #e5e5e5;
+  height: 20rpx; }
+
+.itemText {
+  border-width: 2rpx; }
+
+.page-section-title {
+  text-align: center;
+  font-size: 32rpx;
+  background-color: #ecebeb; }

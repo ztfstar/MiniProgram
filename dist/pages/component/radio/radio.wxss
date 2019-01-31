@@ -1,0 +1,58 @@
+
+.components-page {
+  margin: 5rpx 5rpx 5rpx 5rpx; }
+
+.components-page__body {
+  padding: 0; }
+  .components-page__body .example-body {
+    text-align: center;
+    background-color: #ecebeb; }
+
+.example-body__radios {
+  position: relative;
+  padding: 0 15rpx;
+  background-color: #FFFFFF; }
+  .example-body__radios::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1rpx;
+    border-top: 1rpx solid #e5e5e5;
+    color: #e5e5e5; }
+  .example-body__radios::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1rpx;
+    border-top: 1rpx solid #e5e5e5;
+    color: #e5e5e5; }
+  .example-body__radios-item {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20rpx 15rpx; }
+    .example-body__radios-item:not(:first-child)::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1rpx;
+      border-top: 1rpx solid #e5e5e5;
+      color: #e5e5e5;
+      left: 15rpx; }
+
+.example-header {
+  font-size: 32rpx; }
+
+.example-body__radios-item {
+  font-size: 28rpx; }
+
+.example-body__select-box {
+  margin: 20rpx 0; }

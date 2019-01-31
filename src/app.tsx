@@ -23,7 +23,7 @@ class App extends Component {
       'pages/index/index',
       'pages/discovery/discovery',
       'pages/more/more',
-      'pages/component/list',
+      'pages/calculator/calculator',
       
     ],
     window: {

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "radio-1": "../component/radio/radio",
+    "picker-1": "../component/picker/picker"
+  }
+}

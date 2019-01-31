@@ -1,0 +1,50 @@
+<block>
+    <view class="components-page">
+        <view class="components-page__body">
+            <view class="example-body">
+                <view class="example-header"><text>毕业生基本要素之最高学位、学历</text>
+                </view>
+                <view class="example-body__radios">
+                    <radio-group bindchange="radioChange">
+                        <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{educationList}}" wx:for-item="item" wx:for-index="i">
+                            <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="example-body">
+                <view class="example-header"><text class="sortName">毕业生基本要素之毕业学校</text>
+                </view>
+                <view class="example-body__radios">
+                    <radio-group bindchange="radioChange">
+                        <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{schoolList}}" wx:for-item="item" wx:for-index="i">
+                            <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="example-body">
+                <view class="example-header"><text class="sortName">毕业生基本要素之学习成绩</text>
+                </view>
+                <view class="example-body__radios">
+                    <radio-group bindchange="radioChange">
+                        <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{scoreList}}" wx:for-item="item" wx:for-index="i">
+                            <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="example-body">
+                <view class="example-header"><text class="sortName">毕业生基本要素之计算机水平</text>
+                </view>
+                <view class="example-body__radios">
+                    <radio-group bindchange="radioChange">
+                        <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{computerList}}" wx:for-item="item" wx:for-index="i">
+                            <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
