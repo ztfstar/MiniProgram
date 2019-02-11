@@ -32,12 +32,44 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PagePicker.__proto__ || Object.getPrototypeOf(PagePicker)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["honor", "honorChecked", "learning", "learningChecked"], _this.onChange = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PagePicker.__proto__ || Object.getPrototypeOf(PagePicker)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["honor", "honorChecked", "learning", "learningChecked"], _this.onChange1 = function (e) {
+      _this.setState({
+        honorChecked: _this.state.honor[e.detail.value]
+      });
+    }, _this.onChange2 = function (e) {
       console.log(e);
       _this.setState({
-        honorChecked: _this.state.honor[e.detail.value],
-        learningChecked: _this.state.learning[e.detail.value]
+        //learningChecked: this.state.learning[0][e.detail.value[0]]+'&'+this.state.learning[1][e.detail.value[1]],
+        learningChecked: (e.detail.value[0] == 0 ? '全国性' : '地方赛区') + ' & ' + _this.state.learning[1][e.detail.value[1]]
       });
+    }, _this.bindMultiPickerColumnChange = function (e) {
+      //console.log(e.detail)//column 表示的是第几列，value是某一列的第几个值，表示下标
+      // switch(e.detail.column){
+      //   case 0:
+      //   switch(e.detail.value){
+      //     case 0:
+      //     //console.log(e.detail.value)//column 表示的是第几列，value是某一列的第几个值，表示下标
+      //     this.setState({
+      //       learning:[['上述全国性比赛奖项','上述全国性比赛地方赛区'],['一等奖（10分）','二等奖（8分）','三等奖（6分）']],
+      //     })
+      //     case 1:
+      //     //console.log(e.detail.value)//column 表示的是第几列，value是某一列的第几个值，表示下标
+      //     this.setState({
+      //       learning:[['上述全国性比赛奖项','上述全国性比赛地方赛区'],['一等奖（5分）','二等奖（3分）','三等奖（1分）']],
+      //     })
+      //   }
+      //   break
+      if (e.detail.column === 0) {
+        if (e.detail.value === 0) {
+          _this.setState({
+            learning: [['上述全国性比赛奖项', '上述全国性比赛地方赛区'], ['一等奖（10分）', '二等奖（8分）', '三等奖（6分）']]
+          });
+        } else {
+          _this.setState({
+            learning: [['上述全国性比赛奖项', '上述全国性比赛地方赛区'], ['一等奖（5分）', '二等奖（3分）', '三等奖（1分）']]
+          });
+        }
+      }
     }, _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -47,9 +79,9 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
       _get(PagePicker.prototype.__proto__ || Object.getPrototypeOf(PagePicker.prototype), "_constructor", this).apply(this, arguments);
       this.state = {
         honor: ['国家级（10分）', '省(自治区、直辖市)级（5分）', '学校级(每次1分，不超过2分)（1分）'],
-        honorChecked: '国家级（10分）（默认）',
-        learning: ['一等奖（10分）', '二等奖（8分）', '三等奖（6分）'],
-        learningChecked: '一等奖（10分）'
+        honorChecked: '国家级（10分）',
+        learning: [['上述全国性比赛奖项', '上述全国性比赛地方赛区'], ['一等奖（10分）', '二等奖（8分）', '三等奖（6分）']],
+        learningChecked: ''
       };
     }
   }, {
@@ -64,7 +96,7 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
   }]);
 
   return PagePicker;
-}(_index.Component), _class.properties = {}, _class.$$events = ["onChange"], _temp2);
+}(_index.Component), _class.properties = {}, _class.$$events = ["onChange1", "onChange2", "bindMultiPickerColumnChange"], _temp2);
 exports.default = PagePicker;
 
 Component(require('../../../npm/@tarojs/taro-weapp/index.js').default.createComponent(PagePicker));

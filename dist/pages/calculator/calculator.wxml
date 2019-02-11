@@ -2,7 +2,6 @@
     <view class="container">
         <view class="page-body">
             <radio-1 __triggerObserer="{{ _triggerObserer }}"></radio-1>
-            <picker-1 __triggerObserer="{{ _triggerObserer }}"></picker-1>
         </view>
     </view>
 </block>

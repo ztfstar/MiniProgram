@@ -1,7 +1,9 @@
 
 import { Component } from '@tarojs/taro'
-import { View, Text, Radio, Label, RadioGroup ,Picker} from '@tarojs/components'
-
+import { View, Text, Radio, Label, RadioGroup ,Picker,CheckboxGroup,Checkbox} from '@tarojs/components'
+import Picker1 from '../picker/picker'
+import CheckBox from '../checkBox/checkBox'
+import Taro from '@tarojs/taro';
 export default class PageRadio extends Component {
 
   config = {
@@ -100,8 +102,105 @@ export default class PageRadio extends Component {
         text: '四级（成绩排名前76%-100%）（2分）',
         checked: false
       }
-    ]
+    ],
+    englishList:[
+      {
+        value: '8',
+        text: 'CET-6级证书或成绩达到425分(含)以上、专业英语八级 8分',
+        checked: false
+      },
+      {
+        value: '7',
+        text: 'CET-4级证书或成绩达到425分(含)以上、专业英语八级 7分',
+        checked: false
+      },
+      {
+        value: '7',
+        text: '外语类、艺术类、体育类专业外语课程合格 7分',
+        checked: false
+      },
+    ],
+    englishList:[
+      {
+        value: '8',
+        text: 'CET-6级证书或成绩达到425分(含)以上、专业英语八级 8分',
+        checked: false
+      },
+      {
+        value: '7',
+        text: 'CET-4级证书或成绩达到425分(含)以上、专业英语八级 7分',
+        checked: false
+      },
+      {
+        value: '7',
+        text: '外语类、艺术类、体育类专业外语课程合格 7分',
+        checked: false
+      },
+    ],
+    researchList:[
+      {
+        value: '5',
+        text: '最高学历就读期间获得相应的发明专利（5分）',
+        checked: false
+      },
+      {
+        value: '5',
+        text: '上海高校毕业生参加西部计划服务期满（5分）',
+        checked: false
+      },
+      {
+        value: '5',
+        text: '清华、北大本科毕业生 直接落户',
+        checked: false
+      },{
+        value: '5',
+        text: '最高学历在上海高校就读（2分）',
+        checked: false
+      },
+    ],
+    employerList:[
+      {
+        value: '5',
+        text: '基本要素（5分）',
+        checked: false,
+        desc:'用人单位招聘高校毕业生行为符合诚信规范，并与毕业生签订劳动或聘用合同期薇一年及以上的就业协议，劳动派遣方式除外'
+      },
+      {
+        value: '3',
+        text: '引进重点领域人才（3分）',
+        checked: false,
+        desc: '用人单位录用上海市重点发展领域所需学科毕业生',
+      },
+      
+      {
+        value: '3',
+        text: '引进重点领域人才（3分）',
+        checked: false,
+        desc: '用人单位录用上海市重点发展领域所需学科中的教育部、上海市、上海市教委重点学科毕业研究生',
 
+      },
+
+      {
+        value: '3',
+        text: '承担重大项目（3分）',
+        checked: false,
+        desc: '用人单位承担国家和上海经济社会发展重大项目且录用的毕业生专业与行业相匹配',
+      },
+
+      {
+        value: '3',
+        text: '承担重大项目（3分）',
+        checked: false,
+        desc: '用人单位为远郊地区教育、卫生、农业等社会公益事业单位',
+      },
+
+      {
+        value: '5',
+        text: '自主创业（5分）',
+        checked: false,
+        desc: '在校或休学期间创业，企业经营情况良好',
+      },
+    ]
   }
 
   radioChange = e => {
@@ -112,16 +211,25 @@ export default class PageRadio extends Component {
     //   return item
     // })
   
+    // this.setState({
+    //   selectValue: e.detail.value
+    // })
+  }
+  checkboxChange = e => {
+    // const list = this.state.employerList.map(item => {
+    //   item.checked = e.detail.value.indexOf(item.value) >= 0
+    //   return item
+    // })
     this.setState({
-      //list,
-      selectValue: e.detail.value
+     // list,
+      selectValues: e.detail.value
     })
   }
-
   render() {
     return (
       <View className='components-page'>
         <View className='components-page__body'>
+          <View></View>
             <View className='example-body'>
               <View className='example-header'>
                 <Text>毕业生基本要素之最高学位、学历</Text>
@@ -194,8 +302,9 @@ export default class PageRadio extends Component {
 
 
 
-         
-            <View className='example-body'>
+
+
+           <View className='example-body'>
             <View className='example-header'>
               <Text className='sortName'>毕业生基本要素之计算机水平</Text>
             </View>
@@ -216,8 +325,79 @@ export default class PageRadio extends Component {
                 </RadioGroup>
               </View>
             </View>
+            
+            <View><Picker1/></View>
 
+            <View className='example-body'>
+            <View className='example-header'>
+              <Text className='sortName'> 科创、国家就业项目及特殊院校毕业生</Text>
+            </View>
+              <View className='example-body__radios'>
+              {/* <RadioGroup onChange={this.radioChange}>
+                  {this.state.researchList.map((item, i) => {
+                    return (
+                      <Label className='example-body__radios-item' for={i} key={i}>
+                        <Radio
+                          name='radio'
+                          value={item.value}
+                          checked={item.checked}>
+                          {item.text}
+                        </Radio>
+                      </Label>
+                    )
+                  })}
+                </RadioGroup> */}
+                 <CheckboxGroup name='checkbox' onChange={this.checkboxChange}>
+                    {this.state.researchList.map(item => {
+                      return (
+                        <Label
+                          className='checkbox-list__label'
+                          for={item.value}
+                          key={item.value}>
+                          <Checkbox
+                            className='checkbox-list__checkbox'
+                            value={item.value}
+                            checked={item.checked}>
+                            {item.text}                           
+                          </Checkbox>
+                          
+                        </Label>
+                      )
+                    })}
+                  </CheckboxGroup>
+              </View>
+            </View>
 
+         
+         <View className='example-body'>
+            <View className='example-header'>
+              <Text className='sortName'> 用人单位要素分</Text>
+            </View>
+              <View className='example-body__radios'>
+              <View className='checkbox-list'>
+              <CheckboxGroup name='checkbox' onChange={this.checkboxChange}>
+                    {this.state.employerList.map(item => {
+                      return (
+                        <Label
+                          className='checkbox-list__label'
+                          for={item.value}
+                          key={item.value}>
+                          <Checkbox
+                            className='checkbox-list__checkbox'
+                            value={item.value}
+                            checked={item.checked}>
+                            {item.text}                           
+                            <View ><Text className='text-checkBox'>{item.desc}</Text></View>
+                          </Checkbox>
+                          
+                        </Label>
+                      )
+                    })}
+                  </CheckboxGroup>
+                  </View>
+              </View>
+            </View>
+          
 
         </View>
       </View >
@@ -225,48 +405,3 @@ export default class PageRadio extends Component {
   }
 }
 
-// import Taro from '@tarojs/taro'
-// import { AtRadio }  from 'taro-ui'
-// import { View } from '../../../../node_modules/@tarojs/components';
-// export default class Index extends Taro.Component {
-//   constructor () {
-//     super(...arguments)
-//     this.state = {
-//       value: ''
-//     }
-//   }
-//   handleChange (value) {
-//     this.setState({
-//       value
-//     })
-//   }
-//   render () {
-//     return (
-//       <View>
-//         <AtRadio
-//           options={[
-//             { label: '博士、研究生（27分）', value: '27',},
-//             { label: '硕士、研究生（24分）', value: '24' },
-//             { label: '本科生（21分）', value: '21'}
-//           ]}
-//           value={this.state.value}
-//           onClick={this.handleChange.bind(this)}
-//         />
-
-//         <AtRadio
-//           options={[
-//             { label: '第一类高校及研究生培养单位（15分）', value: '15',},
-//             { label: '第一类高校及研究生培养单位（12分）', value: '12' },
-//             { label: '第一类高校及研究生培养单位（8分）', value: '8'}
-//           ]}
-//           value={this.state.value}
-//           onClick={this.handleChange.bind(this)}
-//         />
-//       </View>
-      
-      
-
-      
-//     )
-//   }
-// }

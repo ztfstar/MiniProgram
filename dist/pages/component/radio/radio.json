@@ -1,4 +1,7 @@
 {
   "component": true,
+  "usingComponents": {
+    "picker-1": "../picker/picker"
+  },
   "navigationBarTitleText": "应届生落户积分计算"
 }

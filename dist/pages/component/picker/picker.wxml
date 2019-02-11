@@ -2,16 +2,16 @@
     <view class="container">
         <view class="page-body">
             <view class="page-section">
-                <view class="page-section-title"><text>导向要素</text>
+                <view class="page-section-title"><text>毕业生导向要素</text>
                 </view>
                 <view>
-                    <picker mode="selector" range="{{honor}}" bindchange="onChange">
+                    <picker mode="selector" range="{{honor}}" bindchange="onChange1">
                         <view class="picker">荣誉称号：<text class="itemText">{{honorChecked}}</text>
                         </view>
                     </picker>
                 </view>
                 <view>
-                    <picker mode="selector" range="{{learning}}" bindchange="onChange">
+                    <picker mode="multiSelector" range="{{learning}}" bindchange="onChange2" bindcolumnchange="bindMultiPickerColumnChange">
                         <view class="picker">学术、文体竞赛获奖：<text class="itemText">{{learningChecked}}</text>
                         </view>
                     </picker>
