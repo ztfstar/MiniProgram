@@ -18,27 +18,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var More = (_temp2 = _class = function (_BaseComponent) {
-  _inherits(More, _BaseComponent);
+var discovery = (_temp2 = _class = function (_BaseComponent) {
+  _inherits(discovery, _BaseComponent);
 
-  function More() {
+  function discovery() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, More);
+    _classCallCheck(this, discovery);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = More.__proto__ || Object.getPrototypeOf(More)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = discovery.__proto__ || Object.getPrototypeOf(discovery)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(More, [{
+  _createClass(discovery, [{
     key: "_constructor",
     value: function _constructor(props) {
-      _get(More.prototype.__proto__ || Object.getPrototypeOf(More.prototype), "_constructor", this).call(this, props);
+      _get(discovery.prototype.__proto__ || Object.getPrototypeOf(discovery.prototype), "_constructor", this).call(this, props);
     }
   }, {
     key: "_createData",
@@ -51,8 +51,8 @@ var More = (_temp2 = _class = function (_BaseComponent) {
     }
   }]);
 
-  return More;
+  return discovery;
 }(_index.Component), _class.properties = {}, _class.$$events = [], _temp2);
-exports.default = More;
+exports.default = discovery;
 
-Component(require('../../npm/@tarojs/taro-weapp/index.js').default.createComponent(More, true));
+Component(require('../../npm/@tarojs/taro-weapp/index.js').default.createComponent(discovery, true));

@@ -1,15 +1,15 @@
 import Taro, { Component, Config } from '@tarojs/taro'
+import Tab1List from '../component/List/tab1List';
 import { View, 
          Text,
          Image
         } from '@tarojs/components'
 
-export  default class More extends Component{
+export  default class discovery extends Component{
     render(){
         return(
             <View>
-                <Text>more!</Text>
-                {/* <Image style={{width:300,height:300}} src='../source/img/header.png'/> */}
+                <Tab1List/>
             </View>
         )
     }

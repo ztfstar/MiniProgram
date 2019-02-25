@@ -1,4 +1,5 @@
 <block>
-    <view><text>discovery!</text>
+    <view>
+        <tab-1-list __triggerObserer="{{ _triggerObserer }}"></tab-1-list>
     </view>
 </block>
