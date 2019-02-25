@@ -1,8 +1,0 @@
-<block>
-    <view style="height:100vh">
-        <at-indexes animation="{{false}}" __triggerObserer="{{ _triggerObserer }}" list="{{list}}" bindonclick="onClick" __fn_onClick="{{true}}" data-e-onclick-so="this">
-            <view><text style="font-size:2">请选择您所在的学校(如果下列没有您的学校，请返回选择“其他高校及研究生培养单位”)</text>
-            </view>
-        </at-indexes>
-    </view>
-</block>

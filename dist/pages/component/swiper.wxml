@@ -1,7 +1,0 @@
-<block>
-    <swiper class="test-h" circular="{{true}}" autoplay="{{true}}">
-        <swiper-item>
-            <image style="height:150px;width:375px" src="{{banner1}}"></image>
-        </swiper-item>
-    </swiper>
-</block>

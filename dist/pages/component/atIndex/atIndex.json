@@ -1,5 +1,0 @@
-{
-  "usingComponents": {
-    "at-indexes": "../../../npm/taro-ui/dist/weapp/components/indexes/index"
-  }
-}
