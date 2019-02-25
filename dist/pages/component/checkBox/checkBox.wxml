@@ -1,3 +1,0 @@
-<block>
-    <at-checkbox options="{{checkboxOption}}" __triggerObserer="{{ _triggerObserer }}" selectedList="{{checkedList}}" bindonchange="handleChange" __fn_onChange="{{true}}"></at-checkbox>
-</block>

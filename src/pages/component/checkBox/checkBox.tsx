@@ -1,5 +1,4 @@
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
 import { AtCheckbox } from 'taro-ui'
 export default class Index extends Taro.Component {
   constructor () {
@@ -41,10 +40,10 @@ export default class Index extends Taro.Component {
       }
     ]
   }
-  handleChange (e) {
-    console.log(e)
+  handleChange (value) {
+    console.log(value)
     this.setState({
-      checkedList: [5,'5']
+      checkedList: values
     })
   }
   render () {

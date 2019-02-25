@@ -3,14 +3,15 @@
     "pages/index/index",
     "pages/discovery/discovery",
     "pages/more/more",
-    "pages/calculator/calculator"
+    "pages/calculator/calculator",
+    "pages/component/atIndex/atIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0068C4",
-    "navigationBarTitleText": "侬好上海宁",
+    "navigationBarTitleText": "上海落户小助手",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#626567",

@@ -1,13 +1,16 @@
+
 .components-page {
   margin: 5px 5px 5px 5px;
 }
 .components-page__body {
   padding: 0;
+  margin-top:20;
+
   .example-body{
       text-align: center;
-      background-color: #e3e6ee;//分类栏目标题背景色
+      background-color:  #ecebeb;;//分类栏目标题背景色
       .example-body__radios{
-        text-align: left
+        text-align: left;
       }
   }
 }
@@ -18,7 +21,7 @@
   padding: 0px 15px;
   background-color: #FFFFFF;
   &::before {
-    content: " ";
+    content: " "; 
     position: absolute;
     left: 0;
     top: 0;
@@ -67,7 +70,9 @@
   margin: 20px 0;
 }
 
-
+// .label {
+//   display: flex;
+// }
 
 
 .checkbox-list {
@@ -99,6 +104,7 @@
 .checkbox-list__label {
   position: relative;
   display: flex;
+  flex-direction: column;
   padding: 10px 15px;
   &:not(:first-child) {
     &::before {
@@ -125,9 +131,9 @@
   justify-content: flex-start;
   align-items: flex-start;
   view{
-    width: 620px
+    width: 620px;
   }
-  
+ // background-color: aqua
 }
 
 .text-checkBox {
@@ -135,4 +141,10 @@
   //margin-left:50px;
   font-size: 28px;
   //background-color: #686464
+}
+
+.seeMore {
+  color: #ecebeb;
+  font-size: 28px
+
 }

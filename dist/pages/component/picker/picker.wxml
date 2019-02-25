@@ -5,13 +5,13 @@
                 <view class="page-section-title"><text>毕业生导向要素</text>
                 </view>
                 <view>
-                    <picker mode="selector" range="{{honor}}" bindchange="onChange1">
+                    <picker mode="selector" range="{{honor}}" bindchange="onChange" id="selector">
                         <view class="picker">荣誉称号：<text class="itemText">{{honorChecked}}</text>
                         </view>
                     </picker>
                 </view>
                 <view>
-                    <picker mode="multiSelector" range="{{learning}}" bindchange="onChange2" bindcolumnchange="bindMultiPickerColumnChange">
+                    <picker mode="multiSelector" range="{{learning}}" bindchange="onChange" bindcolumnchange="bindMultiPickerColumnChange" id="multiSelector">
                         <view class="picker">学术、文体竞赛获奖：<text class="itemText">{{learningChecked}}</text>
                         </view>
                     </picker>

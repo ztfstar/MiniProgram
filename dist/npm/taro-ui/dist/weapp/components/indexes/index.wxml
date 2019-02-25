@@ -1,0 +1,22 @@
+<block>
+    <view class="{{rootCls}}" style="{{anonymousState__temp}}">
+        <at-toast customStyle="{{toastStyle}}" __triggerObserer="{{ _triggerObserer }}" isOpened="{{_isShowToast}}" text="{{_tipText}}" duration="{{2000}}"></at-toast>
+        <view class="at-indexes__menu" catchtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
+            <view class="at-indexes__menu-item" bindtap="jumpTarget" data-e-tap-so="this" data-e-tap-a-a="at-indexes__top" data-e-tap-a-b="{{0}}">{{topKey}}</view>
+            <view class="at-indexes__menu-item" wx:key="key" bindtap="jumpTarget" wx:for="{{loopArray0}}" wx:for-item="dataList" wx:for-index="i" data-e-tap-so="this" data-e-tap-a-a="{{dataList.targetView}}" data-e-tap-a-b="{{i + 1}}">{{dataList.key}}</view>
+        </view>
+        <scroll-view class="at-indexes__body" id="{{listId}}" scroll-y="{{true}}" scroll-with-animation="{{animation}}" scroll-top="{{_scrollTop}}" scroll-into-view="{{_scrollIntoView}}">
+            <view class="at-indexes__content" id="at-indexes__top">
+                <slot></slot>
+            </view>
+            <view id="{{'at-indexes__list-' + dataList.key}}" class="at-indexes__list" wx:key="key" wx:for="{{list}}" wx:for-item="dataList">
+                <view class="at-indexes__list-title">{{dataList.title}}</view>
+                <at-list __triggerObserer="{{ _triggerObserer }}">
+                    <block wx:if="{{dataList.items}}">
+                        <at-list-item wx:key="name" __triggerObserer="{{ _triggerObserer }}" title="{{item.name}}" bindonclick="handleClick" wx:for="{{dataList.items}}" wx:for-item="item" __fn_onClick="{{true}}" data-e-onclick-so="this" data-e-onclick-a-a="{{item}}"></at-list-item>
+                    </block>
+                </at-list>
+            </view>
+        </scroll-view>
+    </view>
+</block>

@@ -1,10 +1,18 @@
 
-import { Component } from '@tarojs/taro'
+import Taro, { Component, saveImageToPhotosAlbum, getCurrentPages } from '@tarojs/taro'
 import { View, Text, Radio, Label, RadioGroup ,Picker,CheckboxGroup,Checkbox} from '@tarojs/components'
 import Picker1 from '../picker/picker'
-import CheckBox from '../checkBox/checkBox'
-import Taro from '@tarojs/taro';
+import './radio.scss'
+import item from 'dist/npm/taro-ui/dist/weapp/components/list/item';
+import index from 'dist/pages/index';
+
+let xueli = 0,xuexiao = 0,chengji =0,yingyu =0,jisuanji =0,itemPicker=0,
+itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
+
+
+
 export default class PageRadio extends Component {
+   page = getCurrentPages()
 
   config = {
     navigationBarTitleText: '应届生落户积分计算'
@@ -12,22 +20,31 @@ export default class PageRadio extends Component {
 
   constructor() {
     super(...arguments)
+    // Object.assign(this.props)
   }
 
   state = {
+    //xueli : 0,xuexiao : 0,chengji : 0,yingyu : 0,jisuanji : 0,
+    totalScore:0,
+    itemPicker:0,
+    itemPick1:0,
+    itemPick2:0,
+    checkBox1:0,
+    checkBox2:0,
+    selectValues:0,
     educationList: [
       {
-        value: '27',
+        value: 27,
         text: '博士、研究生（27分）',
         checked: false
       },
       {
-        value: '24',
+        value: 24,
         text: '硕士、研究生（24分）',
         checked: false
       },
       {
-        value: '21',
+        value: 21,
         text: '本科生（21分）',
         checked: false
       }
@@ -45,7 +62,7 @@ export default class PageRadio extends Component {
       },
       {
         value: '8',
-        text: '第三类高校及研究生培养单位（8分）',
+        text: '其他高校及研究生培养单位（8分）',
         checked: false
       }
     ],
@@ -99,36 +116,19 @@ export default class PageRadio extends Component {
       },
       {
         value: '6',
-        text: '四级（成绩排名前76%-100%）（2分）',
+        text: '艺术类、体育类专业：相关课程合格（6分）',
         checked: false
       }
     ],
     englishList:[
       {
         value: '8',
-        text: 'CET-6级证书或成绩达到425分(含)以上、专业英语八级 8分',
+        text: '英语六级425分(含)以上、专业英语八级 8分',
         checked: false
       },
       {
         value: '7',
-        text: 'CET-4级证书或成绩达到425分(含)以上、专业英语八级 7分',
-        checked: false
-      },
-      {
-        value: '7',
-        text: '外语类、艺术类、体育类专业外语课程合格 7分',
-        checked: false
-      },
-    ],
-    englishList:[
-      {
-        value: '8',
-        text: 'CET-6级证书或成绩达到425分(含)以上、专业英语八级 8分',
-        checked: false
-      },
-      {
-        value: '7',
-        text: 'CET-4级证书或成绩达到425分(含)以上、专业英语八级 7分',
+        text: '英语六级425分(含)以上、专业英语八级 7分',
         checked: false
       },
       {
@@ -149,11 +149,11 @@ export default class PageRadio extends Component {
         checked: false
       },
       {
-        value: '5',
+        value: '72',
         text: '清华、北大本科毕业生 直接落户',
         checked: false
       },{
-        value: '5',
+        value: '2',
         text: '最高学历在上海高校就读（2分）',
         checked: false
       },
@@ -167,7 +167,7 @@ export default class PageRadio extends Component {
       },
       {
         value: '3',
-        text: '引进重点领域人才（3分）',
+        text: '引进重点领域人才（上海市重点发展领域所需学科 3分）',
         checked: false,
         desc: '用人单位录用上海市重点发展领域所需学科毕业生',
       },
@@ -202,40 +202,166 @@ export default class PageRadio extends Component {
       },
     ]
   }
+ 
 
   radioChange = e => {
-    console.log(e)
-    // const list = this.state.educationList.map(item => {
-    //   item.checked = item.value == e.detail.value
-    //   console.log(item,e.detail.value)
-    //   return item
-    // })
-  
-    // this.setState({
-    //   selectValue: e.detail.value
-    // })
-  }
-  checkboxChange = e => {
-    // const list = this.state.employerList.map(item => {
-    //   item.checked = e.detail.value.indexOf(item.value) >= 0
-    //   return item
-    // })
+    switch(e.currentTarget.id){
+      case 'xueli':
+      xueli = e.detail.value
+        break;
+      case 'xuexiao':
+      xuexiao = e.detail.value
+        break;
+      case 'chengji':
+        chengji =  e.detail.value
+        break;
+      case 'yingyu':
+        yingyu=  e.detail.value
+        break;
+      case 'jisuanji':
+      jisuanji =  e.detail.value
+        break;
+    }
+    
     this.setState({
-     // list,
-      selectValues: e.detail.value
+      totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
+      Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
     })
+
+    setTimeout(() => {
+      this.props.getScore(this.state.totalScore)
+    }, 500);
+
+   }
+  
+   //pick
+   getItemPick = (itemPick1,itemPick2)=>{
+      itemPicker=itemPick1+itemPick2
+      this.setState({
+        totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
+        Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
+    })
+
+    setTimeout(() => {
+      this.props.getScore(this.state.totalScore)
+    }, 500);
+   }
+   
+
+
+//多选框
+  checkboxChange = e => {
+    if(e.detail.value.length>0){
+      console.log(e)
+      if(e.currentTarget.id=='sigcheckbox'){
+       // this.setState({
+          checkBox1=e.detail.value.reduce((total,num)=>{return Number(total)+Number(num)})
+       // })
+      }else if(e.currentTarget.id=='mulcheckbox'){
+        //this.setState({
+          checkBox2=e.detail.value.reduce((total,num)=>{return Number(total)+Number(num)})
+        //})
+      }else{
+        //this.setState({
+          checkBox2=0;
+          checkBox1=0
+       // })
+      } 
+    }else{//都不选中的情况下
+      if(e.currentTarget.id=='sigcheckbox'){
+           checkBox1=0
+       }else if(e.currentTarget.id=='mulcheckbox'){
+           checkBox2=0
+       }else{
+           checkBox2=0;
+           checkBox1=0
+       } 
+    }
+    this.setState({
+      totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
+      Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
+    })
+    setTimeout(() => {
+      this.props.getScore(Number(this.state.totalScore)
+    },500);
   }
+
+   /**
+     * 生命周期函数--监听页面加载
+     */
+    // onLoad=(options)=> {
+    //   console.log('options',options)
+    // }
+ 
+
+  componentDidMount(){
+    xueli = 0,xuexiao = 0,chengji =0,yingyu =0,jisuanji =0,itemPicker=0,
+    itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
+    //  prevPage = pages[ pages.length - 2 ];  
+    // console.log(prevPage)
+  }
+  componentDidShow(){
+    let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+    let currentPage = pages[ pages.length - 1]
+    if(currentPage.data.schoolObj != null){
+      //学校列表页面返回值
+      const schoolList = this.state.schoolList.map(item => {
+        console.log(currentPage.data.schoolObj.value === undefined)
+        if(currentPage.data.schoolObj.value === undefined && item.value === '12'){
+          item.checked = true
+          xuexiao = 12
+          return item
+        }
+        else if(currentPage.data.schoolObj.value == item.value){
+          item.checked = true
+          xuexiao = 15
+          return item
+        }else{
+          item.checked = false
+          return item
+        }
+        // item.checked = currentPage.data.schoolObj.value == item.value
+        // return item
+       
+      })
+
+      setTimeout(()=>{
+        this.setState({
+          schoolList:schoolList,
+        })
+      },100)
+      
+    }
+    
+    this.setState({
+      totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
+      Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
+    })
+
+    setTimeout(() => {
+      this.props.getScore(this.state.totalScore)
+    }, 500);
+
+    
+  }
+
+  
+
+
   render() {
+    //console.log('this.page',this.page)
+    //console.log(this.onLoad())
     return (
       <View className='components-page'>
         <View className='components-page__body'>
-          <View></View>
-            <View className='example-body'>
+            {/* <View>{this.state.selectValues}</View> */}
+            {/* <View>{this.state.totalScore}</View> */}
+            <View className='example-body' >
               <View className='example-header'>
                 <Text>毕业生基本要素之最高学位、学历</Text>
               </View>
                 <View className='example-body__radios'>
-                  <RadioGroup onChange={this.radioChange}>
+                  <RadioGroup onChange={this.radioChange} id='xueli'>
                     {this.state.educationList.map((item, i) => {
                       return (
                         <Label className='example-body__radios-item' for={i} key={i}>
@@ -256,17 +382,24 @@ export default class PageRadio extends Component {
             
             <View className='example-body'>
             <View className='example-header'>
-              <Text className='sortName'>毕业生基本要素之毕业学校</Text>
+              <Text className='sortName' >
+              毕业生基本要素之毕业学校
+              </Text>
             </View>
+            
               <View className='example-body__radios'>
-                <RadioGroup onChange={this.radioChange}>
+                <View style='background-color:#6190e8'  onClick={()=>{Taro.navigateTo({url:'/pages/component/atIndex/atIndex'})}}>
+                  <Text className='seeMore'>点击查看第一类、第二类高校及研究生培养单位</Text>
+                </View>
+                <RadioGroup onChange={this.radioChange} id='xuexiao'>
                   {this.state.schoolList.map((item, i) => {
                     return (
                       <Label className='example-body__radios-item' for={i} key={i}>
                         <Radio
                           name='radio'
                           value={item.value}
-                          checked={item.checked}>
+                          checked={item.checked}
+                          >
                           {item.text}
                         </Radio>
                       </Label>
@@ -283,7 +416,7 @@ export default class PageRadio extends Component {
               <Text className='sortName'>毕业生基本要素之学习成绩</Text>
             </View>
               <View className='example-body__radios'>
-                <RadioGroup onChange={this.radioChange}>
+                <RadioGroup onChange={this.radioChange} id='chengji'>
                   {this.state.scoreList.map((item, i) => {
                     return (
                       <Label className='example-body__radios-item' for={i} key={i}>
@@ -303,13 +436,35 @@ export default class PageRadio extends Component {
 
 
 
+          <View className='example-body'>
+            <View className='example-header'>
+              <Text className='sortName'>毕业生基本要素之外语水平</Text>
+            </View>
+              <View className='example-body__radios'>
+                <RadioGroup onChange={this.radioChange} id='yingyu'>
+                  {this.state.englishList.map((item, i) => {
+                    return (
+                      <Label className='example-body__radios-item' for={i} key={i}>
+                        <Radio
+                          name='radio'
+                          value={item.value}
+                          checked={item.checked}>
+                          {item.text}
+                        </Radio>
+                      </Label>
+                    )
+                  })}
+                </RadioGroup>
+              </View>
+            </View>   
+
 
            <View className='example-body'>
             <View className='example-header'>
               <Text className='sortName'>毕业生基本要素之计算机水平</Text>
             </View>
               <View className='example-body__radios'>
-                <RadioGroup onChange={this.radioChange}>
+                <RadioGroup onChange={this.radioChange} id='jisuanji'>
                   {this.state.computerList.map((item, i) => {
                     return (
                       <Label className='example-body__radios-item' for={i} key={i}>
@@ -326,7 +481,7 @@ export default class PageRadio extends Component {
               </View>
             </View>
             
-            <View><Picker1/></View>
+            <View><Picker1 getItemPick={(itemPick1,itemPick2)=>this.getItemPick(itemPick1,itemPick2)}/></View>
 
             <View className='example-body'>
             <View className='example-header'>
@@ -347,14 +502,14 @@ export default class PageRadio extends Component {
                     )
                   })}
                 </RadioGroup> */}
-                 <CheckboxGroup name='checkbox' onChange={this.checkboxChange}>
+                 <CheckboxGroup name='checkbox' onChange={this.checkboxChange} id='sigcheckbox'>
                     {this.state.researchList.map(item => {
                       return (
-                        <Label
+                        <Label 
                           className='checkbox-list__label'
                           for={item.value}
                           key={item.value}>
-                          <Checkbox
+                          <Checkbox style='padding-top:5px'
                             className='checkbox-list__checkbox'
                             value={item.value}
                             checked={item.checked}>
@@ -375,19 +530,29 @@ export default class PageRadio extends Component {
             </View>
               <View className='example-body__radios'>
               <View className='checkbox-list'>
-              <CheckboxGroup name='checkbox' onChange={this.checkboxChange}>
-                    {this.state.employerList.map(item => {
+              <CheckboxGroup name='checkbox' onChange={this.checkboxChange} id='mulcheckbox'>
+                    {this.state.employerList.map((item,index) => {
                       return (
+                        /* {index==1? <View style='background-color:#1AAD;'>查</View> :  null}  */
                         <Label
+                          className='label'
+                          //style='flex-direction:column,flex:1'
                           className='checkbox-list__label'
                           for={item.value}
-                          key={item.value}>
+                          key={item.value}>  
+                          {index == 1? <View style='background-color:#6190e8'>
+                            <Text className='seeMore'>点击查看上海市重点领域发展所需学科</Text>
+                          
+                          </View> :  null}                                            
                           <Checkbox
                             className='checkbox-list__checkbox'
                             value={item.value}
                             checked={item.checked}>
-                            {item.text}                           
-                            <View ><Text className='text-checkBox'>{item.desc}</Text></View>
+                            {/* {index==1? <View style='background-color:#1AAD;'>{item.text}</View> :看上海市重点领域发展所需学科*/}
+                            <View>{item.text}</View> 
+                            {/* } */}
+                                                      
+                            <View><Text className='text-checkBox'>{item.desc}</Text></View>
                           </Checkbox>
                           
                         </Label>
@@ -400,6 +565,10 @@ export default class PageRadio extends Component {
           
 
         </View>
+       
+       
+      
+
       </View >
     )
   }

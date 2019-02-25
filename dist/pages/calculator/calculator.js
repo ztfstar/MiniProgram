@@ -18,7 +18,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import Picker1 from '../component/picker/picker'
 var Calculator = (_temp2 = _class = function (_BaseComponent) {
   _inherits(Calculator, _BaseComponent);
 
@@ -33,27 +32,58 @@ var Calculator = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "score", "isOpened"], _this.getScore = function (score) {
+      _this.setState({ score: score });
+    }, _this.btn = function () {
+      console.log('diandaowol');
+      _this.setState({
+        isOpened: true
+      });
+    }, _this.handleClose = function () {
+      _this.setState({
+        isOpened: false
+      });
+    }, _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Calculator, [{
     key: "_constructor",
-    value: function _constructor(props) {
-      _get(Calculator.prototype.__proto__ || Object.getPrototypeOf(Calculator.prototype), "_constructor", this).call(this, props);
+    value: function _constructor() {
+      _get(Calculator.prototype.__proto__ || Object.getPrototypeOf(Calculator.prototype), "_constructor", this).apply(this, arguments);
+      this.state = {
+        score: '',
+        isOpened: false
+      };
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        score: 0
+      });
     }
   }, {
     key: "_createData",
     value: function _createData() {
+      var _this2 = this;
+
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
       ;
-      Object.assign(this.__state, {});
+
+      var anonymousState__temp = function anonymousState__temp(score) {
+        return _this2.getScore(score);
+      };
+
+      Object.assign(this.__state, {
+        anonymousState__temp: anonymousState__temp
+      });
       return this.__state;
     }
   }]);
 
   return Calculator;
-}(_index.Component), _class.properties = {}, _class.$$events = [], _temp2);
+}(_index.Component), _class.properties = {}, _class.$$events = ["btn", "handleClose"], _temp2);
 exports.default = Calculator;
 
 Component(require('../../npm/@tarojs/taro-weapp/index.js').default.createComponent(Calculator, true));

@@ -22,8 +22,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import { AtTabs, AtTabsPane } from 'taro-ui'
-
+//import "taro-ui/dist/style/components/tabs.scss"
 var Index = (_temp2 = _class = function (_BaseComponent) {
   _inherits(Index, _BaseComponent);
 
@@ -75,12 +74,14 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
   }, {
     key: "_createData",
     value: function _createData() {
+      var _this2 = this;
+
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
       ;
 
       this.anonymousFunc0 = function (item, index) {
-        _index2.default.navigateTo({ url: '/pages/calculator/calculator' }).then(console.log('ww'));
+        _index2.default.navigateTo({ url: '/pages/calculator/calculator' }).then(console.log(_this2));
       };
 
       var anonymousState__temp = [{

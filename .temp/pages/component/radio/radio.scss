@@ -1,0 +1,142 @@
+@import "~taro-ui/dist/style/components/checkbox.scss";
+.components-page {
+  margin: 5px 5px 5px 5px;
+}
+.components-page__body {
+  padding: 0;
+  margin-top:20;
+
+  .example-body{
+      text-align: center;
+      background-color:  #ecebeb;;//分类栏目标题背景色
+      .example-body__radios{
+        text-align: left;
+      }
+  }
+}
+
+
+.example-body__radios {
+  position: relative;
+  padding: 0px 15px;
+  background-color: #FFFFFF;
+  &::before {
+    content: " "; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+  }
+  &::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+  }
+  &-item {
+    position: relative;
+    display: flex;
+    padding: 20px 15px;
+    &:not(:first-child) {
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid #e5e5e5;
+        color: #e5e5e5;
+        left: 15px;
+
+      }
+    }
+  }
+}
+.example-header {
+  font-size: 32px
+}
+.example-body__radios-item {
+  font-size: 28px
+}
+.example-body__select-box {
+  margin: 20px 0;
+}
+
+
+
+
+.checkbox-list {
+  position: relative;
+  padding: 10px 15px;
+  background-color: #FFFFFF;
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+  }
+  &::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+  }
+}
+
+.checkbox-list__label {
+  position: relative;
+  display: flex;
+  padding: 10px 15px;
+  &:not(:first-child) {
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid #e5e5e5;
+      color: #e5e5e5;
+      left: 15px;
+      
+    }
+  }
+}
+
+.select-box {
+  margin: 20px 0;
+}
+
+.checkbox-list__checkbox {
+  font-size: 28px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  view{
+    width: 620px;
+  }
+ // background-color: aqua
+}
+
+.text-checkBox {
+  color: #686464;
+  //margin-left:50px;
+  font-size: 28px;
+  //background-color: #686464
+}
+

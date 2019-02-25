@@ -18,6 +18,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// 引入组件样式 - 方式一
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -39,13 +40,13 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/discovery/discovery', 'pages/more/more', 'pages/calculator/calculator'],
+      pages: ['pages/index/index', 'pages/discovery/discovery', 'pages/more/more', 'pages/calculator/calculator', 'pages/component/atIndex/atIndex'],
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#0068C4',
-        navigationBarTitleText: '侬好上海宁',
+        navigationBarTitleText: '上海落户小助手',
         navigationBarTextStyle: 'white',
-        enablePullDownRefresh: true
+        enablePullDownRefresh: false //下拉刷新
       },
       tabBar: {
         color: "#626567",

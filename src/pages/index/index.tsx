@@ -1,10 +1,11 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, ScrollView,tabbar } from '@tarojs/components';
+import { View,ScrollView} from '@tarojs/components';
 import Banner from '../component/swiper'
-// import { AtTabs, AtTabsPane } from 'taro-ui'
 import { AtGrid } from "taro-ui"
-import Tabs from '../component/tabs'
+import Tabs from '../component/tabs/tabs'
 import './index.scss'
+//import "taro-ui/dist/style/components/tabs.scss"
+
 export default class Index extends Component {
 
   /**
@@ -15,6 +16,7 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
+    
     
   }
 
@@ -30,10 +32,11 @@ export default class Index extends Component {
 
   render(){
     return(
-        <View>
+        // <ScrollView style='background-color:#df5e5e;height:800px'>
+         <View>
             <View ><Banner /></View>
             <View>
-            <AtGrid onClick={(item,index)=>{Taro.navigateTo({url:'/pages/calculator/calculator'}).then(console.log('ww'))}}
+            <AtGrid onClick={(item,index)=>{Taro.navigateTo({url:'/pages/calculator/calculator'}).then(console.log(this))}}
             data={[
                 {
                 image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -63,7 +66,8 @@ export default class Index extends Component {
             } />
             </View>
             <View><Tabs/></View>
-        </View>
+        </View> 
+        // </ScrollView>
     )
 }
 onScroll=()=>{

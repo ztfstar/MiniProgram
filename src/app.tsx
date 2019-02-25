@@ -1,8 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
-
 import './app.scss'
-
+import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -24,14 +23,15 @@ class App extends Component {
       'pages/discovery/discovery',
       'pages/more/more',
       'pages/calculator/calculator',
+      'pages/component/atIndex/atIndex',
       
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#0068C4',
-      navigationBarTitleText: '侬好上海宁',
+      navigationBarTitleText: '上海落户小助手',
       navigationBarTextStyle: 'white',
-      enablePullDownRefresh: true
+      enablePullDownRefresh: false//下拉刷新
     },
     tabBar: {
       color: "#626567",
@@ -71,7 +71,8 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <Index />
+        <Index/>
+      
     )
   }
 }

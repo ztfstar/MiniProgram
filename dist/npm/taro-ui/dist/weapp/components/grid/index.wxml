@@ -11,8 +11,7 @@
                             <block wx:if="{{childItem.$original.image}}">
                                 <image class="content-inner__img" src="{{childItem.$original.image}}" mode="scaleToFill"></image>
                             </block>
-                            <block wx:if="{{childItem.$loopState__temp9}}">
-                                <at-icon customStyle="{{childItem.$loopState__temp7}}" __triggerObserer="{{ _triggerObserer }}" value="{{childItem.$original.iconInfo.value}}" color="{{childItem.$original.iconInfo.color}}" className="{{childItem.$original.iconInfo.className}}" prefixClass="{{childItem.$original.iconInfo.prefixClass}}"></at-icon>
+                            <block wx:if="{{childItem.$loopState__temp11}}"><text class="{{childItem.$loopState__temp7}}" style="{{childItem.$loopState__temp9}}"></text>
                             </block>
                         </view><text class="content-inner__text">{{childItem.$original.value}}</text>
                     </view>

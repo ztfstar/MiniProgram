@@ -32,10 +32,57 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PagePicker.__proto__ || Object.getPrototypeOf(PagePicker)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["honor", "honorChecked", "learning", "learningChecked"], _this.onChange1 = function (e) {
-      _this.setState({
-        honorChecked: _this.state.honor[e.detail.value]
-      });
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PagePicker.__proto__ || Object.getPrototypeOf(PagePicker)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["honor", "honorChecked", "learning", "learningChecked", "itemPick1", "itemPick2", "getItemPick"], _this.onChange = function (e) {
+      if (e.currentTarget.id == 'selector') {
+        if (e.detail.value == 0) {
+          _this.setState({
+            itemPick1: 10
+          });
+        } else if (e.detail.value == 1) {
+          _this.setState({
+            itemPick1: 5
+          });
+        } else {
+          _this.setState({
+            itemPick1: 1
+          });
+        }
+        _this.setState({
+          honorChecked: _this.state.honor[e.detail.value]
+        });
+      } else {
+        if (e.detail.value.toString() == [0, 0].toString()) {
+          _this.setState({
+            itemPick2: 10
+          });
+        } else if (e.detail.value.toString() == [0, 1].toString()) {
+          _this.setState({
+            itemPick2: 8
+          });
+        } else if (e.detail.value.toString() == [0, 2].toString()) {
+          _this.setState({
+            itemPick2: 6
+          });
+        } else if (e.detail.value.toString() == [1, 0].toString()) {
+          _this.setState({
+            itemPick2: 5
+          });
+        } else if (e.detail.value.toString() == [1, 1].toString()) {
+          _this.setState({
+            itemPick2: 3
+          });
+        } else {
+          _this.setState({
+            itemPick2: 1
+          });
+        }
+        _this.setState({
+          learningChecked: (e.detail.value[0] == 0 ? '全国性' : '地方赛区') + ' & ' + _this.state.learning[1][e.detail.value[1]]
+        });
+      }
+      setTimeout(function () {
+        _this.props.getItemPick(_this.state.itemPick1, _this.state.itemPick2);
+      }, 500);
     }, _this.onChange2 = function (e) {
       console.log(e);
       _this.setState({
@@ -44,21 +91,6 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
       });
     }, _this.bindMultiPickerColumnChange = function (e) {
       //console.log(e.detail)//column 表示的是第几列，value是某一列的第几个值，表示下标
-      // switch(e.detail.column){
-      //   case 0:
-      //   switch(e.detail.value){
-      //     case 0:
-      //     //console.log(e.detail.value)//column 表示的是第几列，value是某一列的第几个值，表示下标
-      //     this.setState({
-      //       learning:[['上述全国性比赛奖项','上述全国性比赛地方赛区'],['一等奖（10分）','二等奖（8分）','三等奖（6分）']],
-      //     })
-      //     case 1:
-      //     //console.log(e.detail.value)//column 表示的是第几列，value是某一列的第几个值，表示下标
-      //     this.setState({
-      //       learning:[['上述全国性比赛奖项','上述全国性比赛地方赛区'],['一等奖（5分）','二等奖（3分）','三等奖（1分）']],
-      //     })
-      //   }
-      //   break
       if (e.detail.column === 0) {
         if (e.detail.value === 0) {
           _this.setState({
@@ -79,9 +111,11 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
       _get(PagePicker.prototype.__proto__ || Object.getPrototypeOf(PagePicker.prototype), "_constructor", this).apply(this, arguments);
       this.state = {
         honor: ['国家级（10分）', '省(自治区、直辖市)级（5分）', '学校级(每次1分，不超过2分)（1分）'],
-        honorChecked: '国家级（10分）',
+        honorChecked: '',
         learning: [['上述全国性比赛奖项', '上述全国性比赛地方赛区'], ['一等奖（10分）', '二等奖（8分）', '三等奖（6分）']],
-        learningChecked: ''
+        learningChecked: '',
+        itemPick1: 0,
+        itemPick2: 0
       };
     }
   }, {
@@ -96,7 +130,12 @@ var PagePicker = (_temp2 = _class = function (_BaseComponent) {
   }]);
 
   return PagePicker;
-}(_index.Component), _class.properties = {}, _class.$$events = ["onChange1", "onChange2", "bindMultiPickerColumnChange"], _temp2);
+}(_index.Component), _class.properties = {
+  "getItemPick": {
+    "type": null,
+    "value": null
+  }
+}, _class.$$events = ["onChange", "bindMultiPickerColumnChange"], _temp2);
 exports.default = PagePicker;
 
 Component(require('../../../npm/@tarojs/taro-weapp/index.js').default.createComponent(PagePicker));

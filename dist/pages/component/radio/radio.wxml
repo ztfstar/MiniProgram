@@ -1,12 +1,11 @@
 <block>
     <view class="components-page">
         <view class="components-page__body">
-            <view></view>
             <view class="example-body">
                 <view class="example-header"><text>毕业生基本要素之最高学位、学历</text>
                 </view>
                 <view class="example-body__radios">
-                    <radio-group bindchange="radioChange">
+                    <radio-group bindchange="radioChange" id="xueli">
                         <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{educationList}}" wx:for-item="item" wx:for-index="i">
                             <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
                         </label>
@@ -17,7 +16,9 @@
                 <view class="example-header"><text class="sortName">毕业生基本要素之毕业学校</text>
                 </view>
                 <view class="example-body__radios">
-                    <radio-group bindchange="radioChange">
+                    <view style="background-color:#6190e8" bindtap="anonymousFunc0"><text class="seeMore">点击查看第一类、第二类高校及研究生培养单位</text>
+                    </view>
+                    <radio-group bindchange="radioChange" id="xuexiao">
                         <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{schoolList}}" wx:for-item="item" wx:for-index="i">
                             <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
                         </label>
@@ -28,8 +29,19 @@
                 <view class="example-header"><text class="sortName">毕业生基本要素之学习成绩</text>
                 </view>
                 <view class="example-body__radios">
-                    <radio-group bindchange="radioChange">
+                    <radio-group bindchange="radioChange" id="chengji">
                         <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{scoreList}}" wx:for-item="item" wx:for-index="i">
+                            <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="example-body">
+                <view class="example-header"><text class="sortName">毕业生基本要素之外语水平</text>
+                </view>
+                <view class="example-body__radios">
+                    <radio-group bindchange="radioChange" id="yingyu">
+                        <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{englishList}}" wx:for-item="item" wx:for-index="i">
                             <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
                         </label>
                     </radio-group>
@@ -39,7 +51,7 @@
                 <view class="example-header"><text class="sortName">毕业生基本要素之计算机水平</text>
                 </view>
                 <view class="example-body__radios">
-                    <radio-group bindchange="radioChange">
+                    <radio-group bindchange="radioChange" id="jisuanji">
                         <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{computerList}}" wx:for-item="item" wx:for-index="i">
                             <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
                         </label>
@@ -47,15 +59,15 @@
                 </view>
             </view>
             <view>
-                <picker-1 __triggerObserer="{{ _triggerObserer }}"></picker-1>
+                <picker-1 getItemPick="{{anonymousState__temp}}" __triggerObserer="{{ _triggerObserer }}"></picker-1>
             </view>
             <view class="example-body">
                 <view class="example-header"><text class="sortName">科创、国家就业项目及特殊院校毕业生</text>
                 </view>
                 <view class="example-body__radios">
-                    <checkbox-group name="checkbox" bindchange="checkboxChange">
+                    <checkbox-group name="checkbox" bindchange="checkboxChange" id="sigcheckbox">
                         <label class="checkbox-list__label" for="{{item.value}}" wx:key="value" wx:for="{{researchList}}" wx:for-item="item">
-                            <checkbox class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</checkbox>
+                            <checkbox style="padding-top:5px" class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</checkbox>
                         </label>
                     </checkbox-group>
                 </view>
@@ -65,9 +77,14 @@
                 </view>
                 <view class="example-body__radios">
                     <view class="checkbox-list">
-                        <checkbox-group name="checkbox" bindchange="checkboxChange">
-                            <label class="checkbox-list__label" for="{{item.value}}" wx:key="value" wx:for="{{employerList}}" wx:for-item="item">
-                                <checkbox class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}
+                        <checkbox-group name="checkbox" bindchange="checkboxChange" id="mulcheckbox">
+                            <label class="checkbox-list__label" for="{{item.value}}" wx:key="value" wx:for="{{employerList}}" wx:for-item="item" wx:for-index="index">
+                                <block wx:if="{{index == 1}}">
+                                    <view style="background-color:#6190e8"><text class="seeMore">点击查看上海市重点领域发展所需学科</text>
+                                    </view>
+                                </block>
+                                <checkbox class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">
+                                    <view>{{item.text}}</view>
                                     <view><text class="text-checkBox">{{item.desc}}</text>
                                     </view>
                                 </checkbox>
