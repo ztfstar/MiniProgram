@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add dist/npm/taro-ui/dist/weapp/components/list/item --silent --no-progress
+  /usr/local/bin/node /usr/local/bin/yarn add ~taro-ui/dist/style/components/list.scss --silent --no-progress
 
 PATH: 
   /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhangtengfei9/Desktop/MiniProgram/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhangtengfei9/Desktop/MiniProgram/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: http://registry.m.jd.com/dist%2fnpm/taro-ui/dist/weapp/components/list/item: not_found
+  Error: http://registry.m.jd.com/~taro-ui%2fdist/style/components/list.scss: not_found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:65894:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129018:22)
       at Request.emit (events.js:182:13)

@@ -3,8 +3,9 @@ import Taro, { Component, saveImageToPhotosAlbum, getCurrentPages } from '@taroj
 import { View, Text, Radio, Label, RadioGroup ,Picker,CheckboxGroup,Checkbox} from '@tarojs/components'
 import Picker1 from '../picker/picker'
 import './radio.scss'
-import item from 'dist/npm/taro-ui/dist/weapp/components/list/item';
-import index from 'dist/pages/index';
+import zhuanye from './zhuanye.json'
+import { AtFloatLayout,AtSearchBar,AtList, AtListItem } from "taro-ui"
+
 
 let xueli = 0,xuexiao = 0,chengji =0,yingyu =0,jisuanji =0,itemPicker=0,
 itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
@@ -12,8 +13,6 @@ itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
 
 
 export default class PageRadio extends Component {
-   page = getCurrentPages()
-
   config = {
     navigationBarTitleText: '应届生落户积分计算'
   }
@@ -25,6 +24,10 @@ export default class PageRadio extends Component {
 
   state = {
     //xueli : 0,xuexiao : 0,chengji : 0,yingyu : 0,jisuanji : 0,
+    keyWord:'',
+    searchValue:'',
+    isOpened:false,
+    searchList:[],
     totalScore:0,
     itemPicker:0,
     itemPick1:0,
@@ -128,7 +131,7 @@ export default class PageRadio extends Component {
       },
       {
         value: '7',
-        text: '英语六级425分(含)以上、专业英语八级 7分',
+        text: '英语四级425分(含)以上、专业英语八级 7分',
         checked: false
       },
       {
@@ -251,8 +254,8 @@ export default class PageRadio extends Component {
 
 //多选框
   checkboxChange = e => {
+    console.log(e)
     if(e.detail.value.length>0){
-      console.log(e)
       if(e.currentTarget.id=='sigcheckbox'){
        // this.setState({
           checkBox1=e.detail.value.reduce((total,num)=>{return Number(total)+Number(num)})
@@ -295,12 +298,21 @@ export default class PageRadio extends Component {
  
 
   componentDidMount(){
+    // console.log('componentDidMount')
     xueli = 0,xuexiao = 0,chengji =0,yingyu =0,jisuanji =0,itemPicker=0,
     itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
-    //  prevPage = pages[ pages.length - 2 ];  
-    // console.log(prevPage)
+    
+    this.setState({
+      totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
+      Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
+    })
+    setTimeout(() => {
+      this.props.getScore(Number(this.state.totalScore)
+    },500);
+     
   }
   componentDidShow(){
+
     let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
     let currentPage = pages[ pages.length - 1]
     if(currentPage.data.schoolObj != null){
@@ -332,7 +344,7 @@ export default class PageRadio extends Component {
       },100)
       
     }
-    
+    // console.log('ssss')
     this.setState({
       totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
       Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
@@ -540,7 +552,7 @@ export default class PageRadio extends Component {
                           className='checkbox-list__label'
                           for={item.value}
                           key={item.value}>  
-                          {index == 1? <View style='background-color:#6190e8'>
+                          {index == 1? <View style='background-color:#6190e8' onClick={this.employerClick}>
                             <Text className='seeMore'>点击查看上海市重点领域发展所需学科</Text>
                           
                           </View> :  null}                                            
@@ -566,11 +578,100 @@ export default class PageRadio extends Component {
 
         </View>
        
-       
+       {/* <View style='bottom:120px'> */}
+        <AtFloatLayout  isOpened={this.state.isOpened} title="查看您的专业" onClose={ this.handleClose }>
+              <AtSearchBar
+                value={this.state.searchValue}
+                onChange={this.onChangeSearchBar.bind(this)}
+                placeholder=''
+                showActionButton={true}
+                //actionName=''
+                onActionClick={this.searchData}
+            />
+            <View style='margin-bottom:40px'>
+              <AtList >
+                {this.state.searchList.map(item=>{
+                  return <AtListItem title={item.name} extraText={item.id} onClick={()=>this.handleClick(item)}/>
+                })}
+                
+              </AtList>
+            </View>
+            
+        </AtFloatLayout>
+       {/* </View> */}
+        
       
 
       </View >
     )
   }
+
+  employerClick=()=>{
+    this.setState({
+      isOpened:true
+    })
+  }
+
+  handleClose=()=>{
+    this.setState({
+      isOpened:false
+    })
+  }
+
+  onChangeSearchBar=(keyWord)=>{
+   this.setState({
+     keyWord:keyWord
+   })
+  } 
+
+  searchData=()=>{
+    let reg =  new RegExp(this.state.keyWord);
+    let arr = [];
+
+    zhuanye.itemList.forEach(element => {
+      if (reg.test(element.id)||reg.test(element.name)) {
+        arr.push(element);
+      }
+    });
+    this.setState({
+      searchList:arr
+    })
+    //return arr;
+  }
+  handleClick=(e)=>{
+
+
+    const employerList = this.state.employerList.map((item,index) => {
+      //console.log(item)
+      if(e!=null && index==1){
+        item.checked = true
+        checkBox2 = 3
+        return item
+      }
+      else{
+        item.checked = false
+        return item
+      }
+      // item.checked = currentPage.data.schoolObj.value == item.value
+      // return item
+     
+    })
+
+    setTimeout(()=>{
+      this.setState({
+        employerList:employerList,
+      })
+    },100)
+
+    this.handleClose()
+    this.setState({
+      totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
+      Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
+    })
+    setTimeout(() => {
+      this.props.getScore(Number(this.state.totalScore)
+    },500);
+  }
+
 }
 

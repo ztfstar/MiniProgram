@@ -1,0 +1,3 @@
+<block>
+    <web-view src="{{src}}"></web-view>
+</block>

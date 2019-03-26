@@ -1,0 +1,5 @@
+<block>
+    <view>
+        <button class="btn" plain="{{true}}" open-type="getUserInfo" bindgetuserinfo="tobegin" type="primary">登录</button>
+    </view>
+</block>

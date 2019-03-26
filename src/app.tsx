@@ -1,5 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
+import { View,Image,Text,Button} from '@tarojs/components'
+
 import './app.scss'
 import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 // 如果需要在 h5 环境中开启 React Devtools
@@ -20,10 +22,12 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/index/index',
-      'pages/discovery/discovery',
-      'pages/more/more',
       'pages/calculator/calculator',
       'pages/component/atIndex/atIndex',
+      'pages/discovery/discovery',//讨论区
+      'pages/more/more',//我的
+      'pages/component/article/article',
+      'pages/live/live'
       
     ],
     window: {
@@ -59,7 +63,28 @@ class App extends Component {
   }
 
 
-  componentDidMount () {}
+  componentDidMount () {
+    // Taro.login().then(
+    //   ()=>{Taro.getUserInfo().then((res)=>{
+    //     console.log(res)
+    //   })}
+    // )
+    // Taro.login({
+    //   success(res) {
+    //     if (res.code) {
+    //       // 发起网络请求
+    //       Taro.request({
+    //         url: 'https://test.com/onLogin',
+    //         data: {
+    //           code: res.code
+    //         }
+    //       })
+    //     } else {
+    //       console.log('登录失败！' + res.errMsg)
+    //     }
+    //   }
+    // })
+  }
 
   componentDidShow () {}
 
@@ -71,10 +96,21 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
+      // <View className='index'>
+      //   <View>
+      //       <Text>申请获取你的公开信息（昵称、头像等）</Text> 
+      //       <Button open-type='getUserInfo' onGetUserInfo={this.getUserInfo} > 微信授权 </Button>
+      //   </View>
+      // </View >
+      <View>
         <Index/>
+      </View>
+      
       
     )
   }
+
+ 
 }
 
 Taro.render(<App />, document.getElementById('app'))

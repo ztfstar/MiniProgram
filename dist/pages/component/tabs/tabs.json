@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "at-tabs": "../../../npm/taro-ui/dist/weapp/components/tabs/index",
+    "at-tabs-pane": "../../../npm/taro-ui/dist/weapp/components/tabs-pane/index",
+    "tab-1-list": "../List/tab1List"
+  }
+}

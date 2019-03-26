@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "at-noticebar": "../../npm/taro-ui/dist/weapp/components/noticebar/index",
+    "at-toast": "../../npm/taro-ui/dist/weapp/components/toast/index",
+    "at-float-layout": "../../npm/taro-ui/dist/weapp/components/float-layout/index"
+  }
+}

@@ -1,9 +1,10 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View,ScrollView} from '@tarojs/components';
+import { View,ScrollView,Button} from '@tarojs/components';
 import Banner from '../component/swiper'
 import { AtGrid } from "taro-ui"
 import Tabs from '../component/tabs/tabs'
 import './index.scss'
+
 //import "taro-ui/dist/style/components/tabs.scss"
 
 export default class Index extends Component {
@@ -32,11 +33,21 @@ export default class Index extends Component {
 
   render(){
     return(
-        // <ScrollView style='background-color:#df5e5e;height:800px'>
          <View>
             <View ><Banner /></View>
             <View>
-            <AtGrid onClick={(item,index)=>{Taro.navigateTo({url:'/pages/calculator/calculator'}).then(console.log(this))}}
+            <AtGrid 
+            onClick={(item,index)=>{
+                let url = ''
+                switch(index){
+                    case 0:
+                    url = '/pages/calculator/calculator';
+                    break
+                    case 2:
+                    url = '/pages/live/live'
+                }
+                
+                Taro.navigateTo({url:url})}}
             data={[
                 {
                 image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -52,7 +63,7 @@ export default class Index extends Component {
                 },
                 {
                 image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png',
-                value: '人才引进落户'
+                value: '税后工资计算'
                 },
                 {
                 image: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',

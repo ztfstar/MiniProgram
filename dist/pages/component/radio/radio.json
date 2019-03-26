@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "picker-1": "../picker/picker",
+    "at-float-layout": "../../../npm/taro-ui/dist/weapp/components/float-layout/index",
+    "at-search-bar": "../../../npm/taro-ui/dist/weapp/components/search-bar/index",
+    "at-list": "../../../npm/taro-ui/dist/weapp/components/list/index",
+    "at-list-item": "../../../npm/taro-ui/dist/weapp/components/list/item/index"
+  },
+  "navigationBarTitleText": "应届生落户积分计算"
+}

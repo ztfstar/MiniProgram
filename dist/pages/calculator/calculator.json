@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "radio-1": "../component/radio/radio",
+    "at-float-layout": "../../npm/taro-ui/dist/weapp/components/float-layout/index"
+  }
+}

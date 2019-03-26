@@ -1,7 +1,10 @@
 import Taro,{ Component,  } from '@tarojs/taro'
 import { AtList, AtListItem } from "taro-ui"
+import "./tab1.scss";
 
-
+import tab1Data from './tab1.json' 
+import { View } from '@tarojs/components';
+//
 export default class Tab1List extends Component {
      constructor(props){
          super(props)
@@ -9,71 +12,45 @@ export default class Tab1List extends Component {
 
 
     render(){
-       
+     
         return (
-            <AtList>
-                <AtListItem
-                    title='标题文字'
-                    arrow='right'
-                    thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
-                />
-                <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    arrow='right'
-                    thumb='http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png'
-                />
-                <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
-                 <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
-                 <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
-                 <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
-                 <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
-                 <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
-                 <AtListItem
-                    title='标题文字'
-                    note='描述信息'
-                    extraText='详细信息'
-                    arrow='right'
-                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-                />
+            <View >
+                <AtList>
+                {
+                    tab1Data.itemList.map((item)=>{
+                        return(
+                            // <View>
+                                 <AtListItem
+                                    key={item.id}
+                                    title={item.title}
+                                    note={item.note}
+                                    extraText='详细信息'
+                                    arrow='right'
+                                    onClick={()=>this._onClick({item})}//箭头函数里的参数为什么取不到item的值
+                                    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
+                                />
+
+                            //      <AtListItem
+                            //         key={item.id}
+                            //         title={item.title}
+                            //         note={item.note}
+                            //         extraText='详细信息'
+                            //         arrow='right'
+                            //         onClick={()=>this._onClick({item})}//箭头函数里的参数为什么取不到item的值
+                            //         thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
+                            //     />
+                            // </View>
+                        )
+                    })
+                }
             </AtList>
+            </View>
         )
     }
    
+
+    _onClick=({item})=>{
+        let id = item.id;
+        Taro.navigateTo({url:`/pages/component/article/article?id=${id}`})
+    }
 }

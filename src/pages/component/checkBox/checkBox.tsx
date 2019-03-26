@@ -41,7 +41,7 @@ export default class Index extends Taro.Component {
     ]
   }
   handleChange (value) {
-    console.log(value)
+    //console.log(value)
     this.setState({
       checkedList: values
     })

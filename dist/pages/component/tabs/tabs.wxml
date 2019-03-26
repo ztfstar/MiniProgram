@@ -1,0 +1,19 @@
+<block>
+    <at-tabs current="{{current}}" __triggerObserer="{{ _triggerObserer }}" tabList="{{tabList}}" bindonclick="handleClick" __fn_onClick="{{true}}" data-e-onclick-so="this">
+        <at-tabs-pane current="{{current}}" __triggerObserer="{{ _triggerObserer }}" index="{{0}}">
+            <view style="padding: 10px 10px;background-color: #FAFBFC;">
+                <tab-1-list __triggerObserer="{{ _triggerObserer }}"></tab-1-list>
+            </view>
+        </at-tabs-pane>
+        <at-tabs-pane current="{{current}}" __triggerObserer="{{ _triggerObserer }}" index="{{1}}">
+            <view style="padding: 10px 10px;background-color: #FAFBFC;text-align: center;">
+                <tab-1-list __triggerObserer="{{ _triggerObserer }}"></tab-1-list>
+            </view>
+        </at-tabs-pane>
+        <at-tabs-pane current="{{current}}" __triggerObserer="{{ _triggerObserer }}" index="{{2}}">
+            <view style="padding: 10px 10px;background-color: #FAFBFC;text-align: center;">
+                <tab-1-list __triggerObserer="{{ _triggerObserer }}"></tab-1-list>
+            </view>
+        </at-tabs-pane>
+    </at-tabs>
+</block>

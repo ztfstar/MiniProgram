@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "banner": "../component/swiper",
+    "at-grid": "../../npm/taro-ui/dist/weapp/components/grid/index",
+    "tabs": "../component/tabs/tabs"
+  }
+}

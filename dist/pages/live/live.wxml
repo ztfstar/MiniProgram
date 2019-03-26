@@ -1,0 +1,193 @@
+<block>
+    <view class="components-page">
+        <view style="display:flex;justify-content: center;background-color:#6190e8;color:white"><text>上海市居转户积分计算</text>
+        </view>
+        <form bindsubmit="formSubmit" bindreset="formReset">
+            <view class="components-page__body">
+                <view class="example-body">
+                    <view class="example-body__input"><text class="example-body__radios-item">您的年龄:</text>
+                        <view class="input" style="width:80px;">
+                            <input maxlength="4" name="age" type="number" placeholder="请输入年龄" confirm-type="done" placeholder-style="font-size:14px" value="{{age}}" bindchange="changeAge" />
+                        </view><text class="example-body__radios-item">周岁</text>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text>教育背景</text>
+                        <br __triggerObserer="{{ _triggerObserer }}"></br>
+                    </view>
+                    <view class="example-body__radios">
+                        <at-noticebar marquee="{{true}}" __triggerObserer="{{ _triggerObserer }}">请注意：教育背景、专业技术职称和技能等级二选一！！！！！！ 请注意：教育背景、专业技术职称和技能等级二选一！！！！！！</at-noticebar>
+                        <radio-group bindchange="educationChange" name="education">
+                            <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{educationList}}" wx:for-item="item" wx:for-index="i">
+                                <radio value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text>专业技术职称和技能等级</text>
+                    </view>
+                    <view class="example-body__radios">
+                        <at-noticebar marquee="{{true}}" __triggerObserer="{{ _triggerObserer }}">请注意：教育背景、专业技术职称和技能等级二选一！！！！！！ 请注意：教育背景、专业技术职称和技能等级二选一！！！！！！</at-noticebar>
+                        <at-noticebar marquee="{{true}}" __triggerObserer="{{ _triggerObserer }}">持证人以中、高级专业技术职务任职资格和技能类国家职业资格二级、一级申请积分的，最近1年内累计6个月的缴纳职工社会保险费基数应不低于本市上年度职工社会平均工资</at-noticebar>
+                        <radio-group bindchange="technologyChange" name="technology">
+                            <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{technologyList}}" wx:for-item="item" wx:for-index="i">
+                                <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text>缴纳职工社会保险费</text>
+                    </view>
+                    <view class="example-body">
+                        <view class="example-body__input"><text class="example-body__radios-item">缴费年限:</text>
+                            <view class="input" style="width:100px;">
+                                <input maxlength="4" name="safeYear" type="number" placeholder="请输入缴费年限" confirm-type="done" placeholder-style="font-size:14px" value="{{value}}" bindchange="safeYearChange" data-e-change-so="this" />
+                            </view><text class="example-body__radios-item">年</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text class="sortName">创新创业人才与紧缺专业</text>
+                    </view>
+                    <view class="example-body__radios">
+                        <checkbox-group name="addScore1" bindchange="addScore1Change" id="sigcheckbox">
+                            <label class="checkbox-list__label" for="{{item.value}}" wx:key="value" wx:for="{{addScore1List}}" wx:for-item="item">
+                                <checkbox style="padding-top:5px" class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}
+                                    <view><text class="text-checkBox">{{item.desc}}</text>
+                                    </view>
+                                </checkbox>
+                            </label>
+                        </checkbox-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text class="sortName">投资纳税或带动本地就业</text>
+                        <at-noticebar marquee="{{true}}" __triggerObserer="{{ _triggerObserer }}">请注意：投资纳税、聘用上海户籍人员二选一！！！！！！ 请注意：投资纳税、聘用上海户籍人员二选一！！！！！！</at-noticebar>
+                    </view>
+                    <view class="example-body__input"><text class="example-body__radios-item">最近3年投资纳税:</text>
+                        <view class="input" style="width:130px;">
+                            <input maxlength="4" name="pay" type="number" placeholder="请输入纳税总额" placeholder-style="font-size:14px" value="{{value}}" bindchange="payChange" data-e-change-so="this" />
+                        </view><text class="example-body__radios-item">万元</text>
+                    </view>
+                    <view class="example-body__input"><text class="example-body__radios-item">最近3年聘用上海户籍人员:</text>
+                        <view class="input" style="width:130px;">
+                            <input maxlength="4" name="job" type="number" placeholder="请输入聘用人数" placeholder-style="font-size:14px" value="{{value}}" bindchange="jobChange" data-e-change-so="this" />
+                        </view><text class="example-body__radios-item">人</text>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text class="sortName">缴纳职工社会保险费基数</text>
+                    </view>
+                    <view class="example-body__radios">
+                        <radio-group bindchange="safeChange" name="safe">
+                            <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{safeList}}" wx:for-item="item" wx:for-index="i">
+                                <radio style="padding-top:5px" class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}
+                                    <view><text class="text-checkBox">{{item.desc}}</text>
+                                    </view>
+                                </radio>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text class="sortName">特定的公共服务领域</text>
+                    </view>
+                    <view class="example-body__input"><text class="example-body__radios-item">至今为止在该领域已工作</text>
+                        <view class="input" style="width:80px">
+                            <input maxlength="4" name="common" type="number" placeholder="请输入" placeholder-style="font-size:14px" value="{{value}}" bindchange="commonChange" data-e-change-so="this" />
+                        </view><text class="example-body__radios-item">年</text>
+                    </view>
+                    <view style="text-align: left" class="example-body__radios-item"><text>积分管理办法试行期间，特定的公共服务领域范围是指环卫领域，满5年后开始计入总积分</text>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text class="sortName">远郊重点区域</text>
+                    </view>
+                    <view class="example-body__input"><text class="example-body__radios-item">至今为止已经居住</text>
+                        <view class="input" style="width:80px">
+                            <input maxlength="4" name="outer" type="number" placeholder="请输入" placeholder-style="font-size:14px" value="{{value}}" bindchange="outerChange" data-e-change-so="this" />
+                        </view><text class="example-body__radios-item">年</text>
+                    </view>
+                    <view style="text-align: left" class="example-body__radios-item"><text>积分管理办法试行期间，远郊重点区域是指临港地区，满5年后开始计入总积分</text>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text>是否全日制应届高校大学毕业生</text>
+                    </view>
+                    <view class="example-body__radios">
+                        <radio-group bindchange="freshChange" name="fresh">
+                            <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{freshList}}" wx:for-item="item" wx:for-index="i">
+                                <radio style="width:500px" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text>在上海工作期间是否获得过表彰奖励</text>
+                    </view>
+                    <view class="example-body__radios">
+                        <radio-group bindchange="honorChange" name="honor">
+                            <label class="example-body__radios-item" for="{{i}}" wx:key="i" wx:for="{{honorList}}" wx:for-item="item" wx:for-index="i">
+                                <radio style="width:700px" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text>配偶为本市户籍人员</text>
+                    </view>
+                    <view class="example-body__radios">
+                        <radio-group bindchange="isMarryChange">
+                            <label class="example-body__radios-item" style="display: flex;direction: row;align-items: center;flex-wrap: wrap;justify-content: flex-start" for="{{i}}" wx:key="i" wx:for="{{wifeList}}" wx:for-item="item" wx:for-index="i">
+                                <radio name="radio" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}</radio>
+                                <block wx:if="{{i === 1}}">
+                                    <view class="example-body__input">
+                                        <view class="input" style="width:80px;margin-left:10px">
+                                            <input disabled="{{editableMarry}}" maxlength="4" name="marry" type="number" placeholder="请输入" placeholder-style="font-size:14px" value="{{value}}" bindchange="marryChange" data-e-change-so="this" />
+                                        </view><text class="example-body__radios-item">年</text>
+                                    </view>
+                                </block>
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="example-body">
+                    <view class="components-page__header"><text class="sortName">减分指标及一票否决</text>
+                    </view>
+                    <view>
+                        <picker mode="selector" name="fake" range="{{fakeList}}" bindchange="fakeChange" id="selector">
+                            <view class="picker">三年内申请积分提供虚假材料：<text class="itemText">{{fakeChecked}}</text>
+                            </view>
+                        </picker>
+                        <picker mode="selector" name="hold" range="{{holdList}}" bindchange="holdChange" id="selector">
+                            <view class="picker">五年内行政拘留记录：<text class="itemText">{{holdChecked}}</text>
+                            </view>
+                        </picker>
+                        <picker mode="selector" name="commit" range="{{commitList}}" bindchange="commitChange" id="selector">
+                            <view class="picker">五年内一般刑事犯罪记录：<text class="itemText">{{commitChecked}}</text>
+                            </view>
+                        </picker><text style="color:red;font-size:18px">违规生育或严重犯罪，取消申请积分落户资格</text>
+                    </view>
+                </view>
+                <view class="components-page__body-example example">
+                    <view class="example-body">
+                        <button form-type="submit" type="primary">提交</button>
+                    </view>
+                </view>
+            </view>
+        </form>
+        <at-toast duration="1000" __triggerObserer="{{ _triggerObserer }}" isOpened="{{isToastOpened}}" bindonclose="toastClose" text="{{toastText}}" icon="{icon}" __fn_onClose="{{true}}"></at-toast>
+        <at-float-layout isOpened="{{isOpened}}" __triggerObserer="{{ _triggerObserer }}" title="分数计算详情" bindonclose="handleClose" __fn_onClose="{{true}}">
+            <view style="display:flex;flex-direction: column;"><text style="font-size:18px">你目前的总积分是:{{score}}。</text>
+                <block>
+                    <block wx:if="{{score >= 120}}"><text>恭喜您已经达到上海居转户积分要求！请尽快准备相关材料。您也可以关注微信公众号“上海落户小助手”，第一时间获得落户相关资讯，微信公众号回复“落户”，加入上海落户交流群。</text>
+                    </block>
+                    <block wx:else><text>很遗憾，您目前的积分尚未达到上海居转户积分要求。</text>
+                    </block>
+                </block>
+            </view>
+        </at-float-layout>
+    </view>
+</block>

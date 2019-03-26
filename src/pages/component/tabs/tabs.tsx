@@ -15,11 +15,11 @@ export default class Index extends Taro.Component {
     })
   }
   render () {
-    const tabList = [{ title: '要闻' }, { title: '读书' }, { title: '摄影' }]
+    const tabList = [{ title: '要闻' }, { title: '酷工作' }, { title: '交易' }]
     return (
       <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
         <AtTabsPane current={this.state.current} index={0} >
-          <View style='padding: 10px 10px;background-color: #FAFBFC;text-align: center;' ><Tab1List/></View>
+          <View style='padding: 10px 10px;background-color: #FAFBFC;' ><Tab1List/></View>
         </AtTabsPane>
         <AtTabsPane current={this.state.current} index={1}>
         <View style='padding: 10px 10px;background-color: #FAFBFC;text-align: center;' ><Tab1List/></View>

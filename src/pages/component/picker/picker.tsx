@@ -4,9 +4,9 @@ import './picker.scss'
 
 export default class PagePicker extends Component {
   state = {
-    honor: ['国家级（10分）', '省(自治区、直辖市)级（5分）', '学校级(每次1分，不超过2分)（1分）'],
+    honor: ['国家级（10分）', '省(自治区、直辖市)级（5分）', '学校级2次（2分）','学校级1次（1分）'],
     honorChecked: '',
-    learning:[['上述全国性比赛奖项','上述全国性比赛地方赛区'],['一等奖（10分）','二等奖（8分）','三等奖（6分）']],
+    learning:[['全国性比赛奖项','全国性比赛地方赛区'],['一等奖（10分）','二等奖（8分）','三等奖（6分）']],
     learningChecked:'',
     itemPick1:0,
     itemPick2:0
@@ -20,6 +20,10 @@ onChange = e => {
     }else if(e.detail.value == 1){
       this.setState({
         itemPick1:5
+      })
+    }else if(e.detail.value == 2){
+      this.setState({
+        itemPick1:2
       })
     }else{
       this.setState({
@@ -65,7 +69,7 @@ onChange = e => {
   },500)
   }
   onChange2 = e => {
-    console.log(e)
+    //console.log(e)
     this.setState({
       //learningChecked: this.state.learning[0][e.detail.value[0]]+'&'+this.state.learning[1][e.detail.value[1]],
       learningChecked: (e.detail.value[0] == 0?'全国性':'地方赛区')+' & '+this.state.learning[1][e.detail.value[1]],
@@ -88,7 +92,16 @@ onChange = e => {
     }
   }
 
-
+  componentDidMount(){
+    // xueli = 0,xuexiao = 0,chengji =0,yingyu =0,jisuanji =0,itemPicker=0,
+    // itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
+    // //  prevPage = pages[ pages.length - 2 ];  
+    // // console.log(prevPage)
+    this.setState({
+      itemPick1:0,
+      itemPick2:0
+    })
+  }
 
 
 render () {
