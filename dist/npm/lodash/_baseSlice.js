@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * The base implementation of `_.slice` without an iteratee call guard.
  *

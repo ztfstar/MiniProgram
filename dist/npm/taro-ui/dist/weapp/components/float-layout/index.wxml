@@ -2,13 +2,13 @@
     <view class="{{rootClass}}" catchtouchmove="handleTouchMove">
         <view bindtap="close" class="at-float-layout__overlay"></view>
         <view class="at-float-layout__container layout">
-            <block wx:if="{{title}}">
-                <view class="layout-header"><text class="layout-header__title">{{title}}</text>
-                    <view class="layout-header__btn-close" bindtap="close"></view>
+            <view class="layout-header"><text class="layout-header__title">{{title}}</text>
+                <view class="layout-header__icon" bindtap="close">
+                    <at-icon customStyle="{{anonymousState__temp}}" __triggerObserer="{{ _triggerObserer }}" value="close" color="#CCC"></at-icon>
                 </view>
-            </block>
+            </view>
             <view class="layout-body">
-                <scroll-view scroll-y="{{scrollY}}" scroll-x="{{scrollX}}" scroll-top="{{scrollTop}}" scroll-left="{{scrollLeft}}" upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-with-animation="{{scrollWithAnimation}}" bindscroll="funPrivatepjacF" bindscrolltolower="funPrivategVXfQ" bindscrolltoupper="funPrivateTNxSo" class="layout-body__content">
+                <scroll-view scroll-y="{{scrollY}}" scroll-x="{{scrollX}}" scroll-top="{{scrollTop}}" scroll-left="{{scrollLeft}}" upper-threshold="{{upperThreshold}}" lower-threshold="{{lowerThreshold}}" scroll-with-animation="{{scrollWithAnimation}}" bindscroll="funPrivateBNiiU" bindscrolltolower="funPrivateAIJKP" bindscrolltoupper="funPrivaterRnIP" class="layout-body__content">
                     <slot></slot>
                 </scroll-view>
             </view>

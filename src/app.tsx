@@ -1,9 +1,12 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
 import { View,Image,Text,Button} from '@tarojs/components'
+import { Provider } from '@tarojs/redux'
 
-import './app.scss'
-import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
+import configStore from './redux/store'
+const store = configStore()
+//import './app.scss'
+// import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -21,13 +24,16 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index',
-      'pages/calculator/calculator',
+      'pages/index/index',//主页
+      'pages/calculator/calculator',//应届生计算
       'pages/component/atIndex/atIndex',
-      'pages/discovery/discovery',//讨论区
+      'pages/discuss/post',//讨论区
       'pages/more/more',//我的
       'pages/component/article/article',
-      'pages/live/live'
+      'pages/live/live',//居转户页面
+      'pages/discuss/addPost',//发帖子
+      'pages/discuss/postDetail'//帖子回复
+
       
     ],
     window: {
@@ -48,7 +54,7 @@ class App extends Component {
         //iconPath: "./asset/images/index.png",
         //selectedIconPath: "./asset/images/index_focus.png"
       },{
-        pagePath: "pages/discovery/discovery",
+        pagePath: "pages/discuss/post",
         text: "讨论区",
         // iconPath: "./asset/images/discovery.png",
         // selectedIconPath: "./asset/images/discovery_focus.png"
@@ -96,15 +102,12 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      // <View className='index'>
-      //   <View>
-      //       <Text>申请获取你的公开信息（昵称、头像等）</Text> 
-      //       <Button open-type='getUserInfo' onGetUserInfo={this.getUserInfo} > 微信授权 </Button>
-      //   </View>
-      // </View >
-      <View>
-        <Index/>
-      </View>
+      <Provider store={store}>
+        <Index />
+      </Provider>
+      // <View>
+      //   <Index/>
+      // </View>
       
       
     )

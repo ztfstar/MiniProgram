@@ -1,15 +1,18 @@
 # install modules
 node_modules
 typings
-
+dist/
 # mac
 .DS_Store
-
+dist/
 # ide
 .vs_code
 .idea
-
+dist/
 # build
 outputBundle
 package-lock.json
 yarn.lock
+dist/
+node_modules      
+.eslintrc    

@@ -22,7 +22,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//import "taro-ui/dist/style/components/tabs.scss"
+//import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 var Index = (_temp2 = _class = function (_BaseComponent) {
   _inherits(Index, _BaseComponent);
 
@@ -76,6 +76,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       this.anonymousFunc0 = function (item, index) {
@@ -101,10 +102,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         value: '居转户'
       }, {
         image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png',
-        value: '人才引进落户'
+        value: '税后工资计算'
       }, {
         image: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',
-        value: '11类人才申请落户'
+        value: '人才引进落户'
       }, {
         image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
         value: '投靠落户方式'

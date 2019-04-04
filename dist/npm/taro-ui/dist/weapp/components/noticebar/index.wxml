@@ -2,23 +2,26 @@
     <block wx:if="{{show}}">
         <view class="{{anonymousState__temp}}" style="{{anonymousState__temp2}}">
             <block wx:if="{{close}}">
-                <view class="at-noticebar__close" bindtap="onClose" data-e-tap-so="this"><text class="at-icon at-icon-close"></text>
+                <view class="at-noticebar__close" bindtap="onClose" data-e-tap-so="this">
+                    <at-icon customStyle="{{anonymousState__temp3}}" __triggerObserer="{{ _triggerObserer }}" value="close" color="#ccc"></at-icon>
                 </view>
             </block>
             <view class="at-noticebar__content">
                 <block wx:if="{{icon}}">
-                    <view class="at-noticebar__content-icon"><text class="{{anonymousState__temp3}}"></text>
+                    <view class="at-noticebar__content-icon">
+                        <at-icon customStyle="{{anonymousState__temp4}}" __triggerObserer="{{ _triggerObserer }}" value="{{icon}}"></at-icon>
                     </view>
                 </block>
                 <view class="at-noticebar__content-text">
-                    <view animation="{{animationData}}" class="{{anonymousState__temp4}}" style="{{anonymousState__temp5}}">
+                    <view animation="{{animationData}}" class="{{innerClassName}}" style="{{anonymousState__temp5}}">
                         <slot></slot>
                     </view>
                 </view>
             </view>
             <block wx:if="{{showMore}}">
                 <view class="at-noticebar__more" bindtap="onGotoMore" data-e-tap-so="this"><text class="text">{{_moreText}}</text>
-                    <view class="at-noticebar__more-icon"><text class="at-icon at-icon-chevron-right"></text>
+                    <view class="at-noticebar__more-icon">
+                        <at-icon customStyle="{{anonymousState__temp6}}" __triggerObserer="{{ _triggerObserer }}" value="chevron-right"></at-icon>
                     </view>
                 </view>
             </block>

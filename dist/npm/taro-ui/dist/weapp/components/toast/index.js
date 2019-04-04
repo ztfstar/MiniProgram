@@ -60,7 +60,7 @@ var AtToast = (_temp2 = _class = function (_AtComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtToast.__proto__ || Object.getPrototypeOf(AtToast)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "anonymousState__temp2", "_isOpened", "hasMask", "bodyClass", "realImg", "isRenderIcon", "iconClass", "text", "status", "customStyle", "icon", "image", "className", "isOpened", "duration"], _this.handleClick = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtToast.__proto__ || Object.getPrototypeOf(AtToast)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "anonymousState__temp2", "_isOpened", "hasMask", "bodyClass", "realImg", "isRenderIcon", "icon", "text", "status", "image", "className", "isOpened", "duration"], _this.handleClick = function () {
       var _this$props = _this.props,
           onClick = _this$props.onClick,
           status = _this$props.status;
@@ -157,11 +157,11 @@ var AtToast = (_temp2 = _class = function (_AtComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       var _isOpened = this.__state._isOpened;
       var _props = this.__props,
-          customStyle = _props.customStyle,
           text = _props.text,
           icon = _props.icon,
           status = _props.status,
@@ -173,14 +173,12 @@ var AtToast = (_temp2 = _class = function (_AtComponent) {
       var isRenderIcon = !!(icon && !(image || statusImg[status]));
 
       var bodyClass = (0, _index6.default)('toast-body', _defineProperty({
-        'at-toast__body--custom-image': image,
+        'at-toast-body--custom-image': image,
         'toast-body--text': !realImg && !icon
-      }, "at-toast__body--" + status, !!status));
-
-      var iconClass = (0, _index6.default)('at-icon', _defineProperty({}, "at-icon-" + icon, icon));
+      }, "at-toast-body--" + status, !!status));
 
       var anonymousState__temp = _isOpened ? (0, _index6.default)('at-toast', this.__props.className) : null;
-      var anonymousState__temp2 = _isOpened ? (0, _index.internal_inline_style)(customStyle) : null;
+      var anonymousState__temp2 = isRenderIcon ? _isOpened ? { fontSize: '50px' } : null : null;
       Object.assign(this.__state, {
         anonymousState__temp: anonymousState__temp,
         anonymousState__temp2: anonymousState__temp2,
@@ -188,7 +186,7 @@ var AtToast = (_temp2 = _class = function (_AtComponent) {
         bodyClass: bodyClass,
         realImg: realImg,
         isRenderIcon: isRenderIcon,
-        iconClass: iconClass,
+        icon: icon,
         text: text
       });
       return this.__state;
@@ -214,10 +212,6 @@ var AtToast = (_temp2 = _class = function (_AtComponent) {
     "value": null
   },
   "__fn_onClick": {
-    "type": null,
-    "value": null
-  },
-  "customStyle": {
     "type": null,
     "value": null
   },
@@ -261,12 +255,12 @@ AtToast.propTypes = {
   text: _index4.default.string,
   icon: _index4.default.string,
   hasMask: _index4.default.bool,
+  onClick: _index4.default.func,
+  onClose: _index4.default.func,
   image: _index4.default.string,
   isOpened: _index4.default.bool,
   duration: _index4.default.number,
-  status: _index4.default.oneOf(['', 'error', 'loading', 'success']),
-  onClick: _index4.default.func,
-  onClose: _index4.default.func
+  status: _index4.default.oneOf(['', 'error', 'loading', 'success'])
 };
 exports.default = AtToast;
 

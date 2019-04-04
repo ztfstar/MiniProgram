@@ -1,5 +1,3 @@
-"use strict";
-
 var isObject = require("./isObject.js"),
     isSymbol = require("./isSymbol.js");
 

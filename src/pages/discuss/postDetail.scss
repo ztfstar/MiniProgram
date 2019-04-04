@@ -1,0 +1,23 @@
+.postdetail {
+    margin: 25px 35px 25px 35px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    border-bottom:1px solid #d9d9d9
+}
+
+.title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 34px;
+
+}
+
+.content{
+    margin: 25px 2px 25px 2px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin-top: 20px;
+    color:#404040
+}

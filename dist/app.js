@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,9 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _index = require('./npm/@tarojs/taro-weapp/index.js');
+var _index = require("./npm/@tarojs/taro-weapp/index.js");
 
 var _index2 = _interopRequireDefault(_index);
+
+var _index3 = require("./npm/@tarojs/redux/index.js");
+
+var _index4 = require("./redux/store/index.js");
+
+var _index5 = _interopRequireDefault(_index4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,12 +24,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// 引入组件样式 - 方式一
+var store = (0, _index5.default)();
+//import './app.scss'
+// import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+(0, _index3.setStore)(store);
+
 var _App = function (_BaseComponent) {
   _inherits(_App, _BaseComponent);
 
@@ -40,7 +50,8 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/calculator/calculator', 'pages/component/atIndex/atIndex', 'pages/discovery/discovery', 'pages/more/more', 'pages/component/article/article', 'pages/live/live'],
+      pages: ['pages/index/index', 'pages/calculator/calculator', 'pages/component/atIndex/atIndex', 'pages/discuss/post', 'pages/more/more', 'pages/component/article/article', 'pages/live/live', 'pages/discuss/addPost', 'pages/discuss/postDetail' //帖子回复
+      ],
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#0068C4',
@@ -57,7 +68,7 @@ var _App = function (_BaseComponent) {
           pagePath: "pages/index/index",
           text: "首页"
         }, {
-          pagePath: "pages/discovery/discovery",
+          pagePath: "pages/discuss/post",
           text: "讨论区"
         }, {
           pagePath: "pages/more/more",
@@ -69,7 +80,7 @@ var _App = function (_BaseComponent) {
   }
 
   _createClass(_App, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       // Taro.login().then(
       //   ()=>{Taro.getUserInfo().then((res)=>{
@@ -93,19 +104,19 @@ var _App = function (_BaseComponent) {
       // })
     }
   }, {
-    key: 'componentDidShow',
+    key: "componentDidShow",
     value: function componentDidShow() {}
   }, {
-    key: 'componentDidHide',
+    key: "componentDidHide",
     value: function componentDidHide() {}
   }, {
-    key: 'componentDidCatchError',
+    key: "componentDidCatchError",
     value: function componentDidCatchError() {}
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
 
   }, {
-    key: '_createData',
+    key: "_createData",
     value: function _createData() {}
   }]);
 

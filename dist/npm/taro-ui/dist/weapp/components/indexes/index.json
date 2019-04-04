@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "at-list": "../list/index",
-    "at-list-item": "../list/item/index",
-    "at-toast": "../toast/index"
+    "at-list-item": "../list/item/index"
   }
 }

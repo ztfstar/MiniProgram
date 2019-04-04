@@ -22,6 +22,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//import "./tab1.scss";
 var tab1Data = {
   "itemList": [{
     "title": "2018\u5E74\u975E\u4E0A\u6D77\u751F\u6E90\u5E94\u5C4A\u666E\u901A\u9AD8\u6821\u6BD5\u4E1A\u751F\u8FDB\u6CAA\u5C31\u4E1A\u7533\u529E\u672C\u5E02\u6237\u7C4D\u529E\u6CD5\u301072\u5206\u3011",
@@ -69,6 +70,7 @@ var Tab1List = (_temp2 = _class = function (_BaseComponent) {
 
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
       var loopArray0 = tab1Data.itemList.map(function (item, __index0) {
         item = {

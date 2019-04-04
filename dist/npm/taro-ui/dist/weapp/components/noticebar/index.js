@@ -48,7 +48,7 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtNoticebar.__proto__ || Object.getPrototypeOf(AtNoticebar)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "anonymousState__temp2", "anonymousState__temp3", "anonymousState__temp4", "anonymousState__temp5", "close", "icon", "showMore", "_moreText", "show", "animElemId", "dura", "isWEAPP", "isALIPAY", "isWEB", "animationData", "marquee", "speed", "single", "customStyle", "moreText", "className", "children"], _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtNoticebar.__proto__ || Object.getPrototypeOf(AtNoticebar)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "anonymousState__temp2", "anonymousState__temp3", "anonymousState__temp4", "anonymousState__temp5", "anonymousState__temp6", "close", "icon", "innerClassName", "showMore", "_moreText", "show", "animElemId", "dura", "isWEAPP", "isWEB", "animationData", "marquee", "speed", "single", "customStyle", "moreText", "className", "children"], _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(AtNoticebar, [{
@@ -61,7 +61,6 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
         animElemId: animElemId,
         dura: 15,
         isWEAPP: _index4.default.getEnv() === _index4.default.ENV_TYPE.WEAPP,
-        isALIPAY: _index4.default.getEnv() === _index4.default.ENV_TYPE.ALIPAY,
         isWEB: _index4.default.getEnv() === _index4.default.ENV_TYPE.WEB
       };
     }
@@ -98,10 +97,6 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
     value: function initAnimation() {
       var _this2 = this;
 
-      var _state = this.state,
-          isWEAPP = _state.isWEAPP,
-          isALIPAY = _state.isALIPAY;
-
       this.timeout = setTimeout(function () {
         _this2.timeout = null;
         if (_this2.state.isWEB) {
@@ -111,14 +106,12 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
           }var width = elem.getBoundingClientRect().width;
           var dura = width / +_this2.props.speed;
           _this2.setState({ dura: dura });
-        } else if (isWEAPP || isALIPAY) {
-          var query = isALIPAY ? _index4.default.createSelectorQuery() : _index4.default.createSelectorQuery().in(_this2.$scope);
-          query.select("." + _this2.state.animElemId).boundingClientRect().exec(function (res) {
-            res = res[0];
+        } else if (_this2.state.isWEAPP) {
+          var query = _index4.default.createSelectorQuery().in(_this2.$scope);
+          query.select("." + _this2.state.animElemId).boundingClientRect(function (res) {
             if (!res) {
               return;
-            }var _res = res,
-                width = _res.width;
+            }var width = res.width;
 
             var dura = width / +_this2.props.speed;
             var animation = _index4.default.createAnimation({
@@ -129,32 +122,17 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
               duration: 0,
               timingFunction: 'linear'
             });
-            var resetOpacityAnimation = _index4.default.createAnimation({
-              duration: 0,
-              timingFunction: 'linear'
-            });
             var animBody = function animBody() {
-              resetOpacityAnimation.opacity(0).step();
-              _this2.setState({ animationData: resetOpacityAnimation.export() });
-
-              setTimeout(function () {
-                resetAnimation.translateX(0).step();
-                _this2.setState({ animationData: resetAnimation.export() });
-              }, 300);
-
-              setTimeout(function () {
-                resetOpacityAnimation.opacity(1).step();
-                _this2.setState({ animationData: resetOpacityAnimation.export() });
-              }, 600);
-
+              resetAnimation.translateX(0).step();
+              _this2.setState({ animationData: resetAnimation.export() });
               setTimeout(function () {
                 animation.translateX(-width).step();
                 _this2.setState({ animationData: animation.export() });
-              }, 900);
+              }, 100);
             };
             animBody();
-            _this2.interval = setInterval(animBody, dura * 1000 + 1000);
-          });
+            _this2.interval = setInterval(animBody, dura * 1000 + 100);
+          }).exec();
         }
       }, 100);
     }
@@ -163,6 +141,7 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       var _props = this.__props,
@@ -192,26 +171,27 @@ var AtNoticebar = (_temp2 = _class = function (_AtComponent) {
 
       var classObject = {
         'at-noticebar--marquee': marquee,
-        'at-noticebar--weapp': marquee && (this.__state.isWEAPP || this.__state.isALIPAY),
+        'at-noticebar--weapp': marquee && this.__state.isWEAPP,
+        'at-noticebar--more': !marquee && showMore,
         'at-noticebar--single': !marquee && single
       };
 
-      var iconClass = ['at-icon'];
-      if (icon) {
-        iconClass.push("at-icon-" + icon);
-      }var anonymousState__temp = this.__state.show ? (0, _index6.default)(rootClassName, classObject, this.__props.className) : null;
+      var anonymousState__temp = this.__state.show ? (0, _index6.default)(rootClassName, classObject, this.__props.className) : null;
       var anonymousState__temp2 = this.__state.show ? (0, _index3.internal_inline_style)(customStyle) : null;
-      var anonymousState__temp3 = icon ? (0, _index6.default)(iconClass, iconClass) : null;
-      var anonymousState__temp4 = this.__state.show ? (0, _index6.default)(innerClassName) : null;
+      var anonymousState__temp3 = close ? { fontSize: '16px' } : null;
+      var anonymousState__temp4 = icon ? { fontSize: '16px' } : null;
       var anonymousState__temp5 = this.__state.show ? (0, _index3.internal_inline_style)(style) : null;
+      var anonymousState__temp6 = showMore ? { fontSize: '16px' } : null;
       Object.assign(this.__state, {
         anonymousState__temp: anonymousState__temp,
         anonymousState__temp2: anonymousState__temp2,
         anonymousState__temp3: anonymousState__temp3,
         anonymousState__temp4: anonymousState__temp4,
         anonymousState__temp5: anonymousState__temp5,
+        anonymousState__temp6: anonymousState__temp6,
         close: close,
         icon: icon,
+        innerClassName: innerClassName,
         showMore: showMore,
         _moreText: _moreText
       });

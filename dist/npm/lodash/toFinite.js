@@ -1,5 +1,3 @@
-"use strict";
-
 var toNumber = require("./toNumber.js");
 
 /** Used as references for various `Number` constants. */

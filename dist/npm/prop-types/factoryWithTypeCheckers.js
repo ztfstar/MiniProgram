@@ -7,17 +7,15 @@
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var assign = require("../object-assign/index.js");
 
 var ReactPropTypesSecret = require("./lib/ReactPropTypesSecret.js");
 var checkPropTypes = require("./checkPropTypes.js");
 
-var printWarning = function printWarning() {};
+var printWarning = function () {};
 
 {
-  printWarning = function printWarning(text) {
+  printWarning = function (text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
       console.error(message);
@@ -406,7 +404,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
   }
 
   function isNode(propValue) {
-    switch (typeof propValue === "undefined" ? "undefined" : _typeof(propValue)) {
+    switch (typeof propValue) {
       case 'number':
       case 'string':
       case 'undefined':
@@ -473,7 +471,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   // Equivalent of `typeof` but with special handling for array and regexp.
   function getPropType(propValue) {
-    var propType = typeof propValue === "undefined" ? "undefined" : _typeof(propValue);
+    var propType = typeof propValue;
     if (Array.isArray(propValue)) {
       return 'array';
     }

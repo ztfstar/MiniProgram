@@ -40,8 +40,6 @@ var _component2 = _interopRequireDefault(_component);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -91,6 +89,7 @@ var AtGrid = (_temp2 = _class = function (_AtComponent) {
 
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       var _props = this.__props,
@@ -125,18 +124,13 @@ var AtGrid = (_temp2 = _class = function (_AtComponent) {
           var $loopState__temp5 = (0, _index.internal_inline_style)({
             flex: "0 0 " + 100 / columnNum + "%"
           });
-          var $loopState__temp7 = (0, _isObject3.default)(childItem.$original.iconInfo) && !childItem.$original.image ? (0, _index6.default)(childItem.$original.iconInfo.prefixClass || 'at-icon', _defineProperty({}, (childItem.$original.iconInfo.prefixClass || 'at-icon') + "-" + childItem.$original.iconInfo.value, childItem.$original.iconInfo.value), childItem.$original.iconInfo.className) : null;
-          var $loopState__temp9 = (0, _isObject3.default)(childItem.$original.iconInfo) && !childItem.$original.image ? (0, _index.internal_inline_style)(_this2.mergeStyle({
-            color: childItem.$original.iconInfo.color,
-            fontSize: (childItem.$original.iconInfo.size || 24) + "px"
-          }, childItem.$original.iconInfo.customStyle)) : null;
-          var $loopState__temp11 = (0, _isObject3.default)(childItem.$original.iconInfo) && !childItem.$original.image;
+          var $loopState__temp7 = (0, _isObject3.default)(childItem.$original.iconInfo) && !childItem.$original.image ? _this2.mergeStyle({ fontSize: (childItem.$original.iconInfo.size || 24) + "px" }, childItem.$original.iconInfo.customStyle) : null;
+          var $loopState__temp9 = (0, _isObject3.default)(childItem.$original.iconInfo) && !childItem.$original.image;
           return {
             $loopState__temp3: $loopState__temp3,
             $loopState__temp5: $loopState__temp5,
             $loopState__temp7: $loopState__temp7,
             $loopState__temp9: $loopState__temp9,
-            $loopState__temp11: $loopState__temp11,
             $original: childItem.$original
           };
         });

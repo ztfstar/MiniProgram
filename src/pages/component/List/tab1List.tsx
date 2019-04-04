@@ -1,6 +1,6 @@
 import Taro,{ Component,  } from '@tarojs/taro'
 import { AtList, AtListItem } from "taro-ui"
-import "./tab1.scss";
+//import "./tab1.scss";
 
 import tab1Data from './tab1.json' 
 import { View } from '@tarojs/components';

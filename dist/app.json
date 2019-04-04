@@ -3,10 +3,12 @@
     "pages/index/index",
     "pages/calculator/calculator",
     "pages/component/atIndex/atIndex",
-    "pages/discovery/discovery",
+    "pages/discuss/post",
     "pages/more/more",
     "pages/component/article/article",
-    "pages/live/live"
+    "pages/live/live",
+    "pages/discuss/addPost",
+    "pages/discuss/postDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +28,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/discovery/discovery",
+        "pagePath": "pages/discuss/post",
         "text": "讨论区"
       },
       {

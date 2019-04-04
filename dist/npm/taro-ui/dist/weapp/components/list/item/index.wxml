@@ -7,7 +7,8 @@
                 </view>
             </block>
             <block wx:if="{{iconInfo.value}}">
-                <view class="at-list__item-icon item-icon"><text class="{{iconClass}}" style="{{anonymousState__temp}}"></text>
+                <view class="at-list__item-icon item-icon">
+                    <at-icon customStyle="{{anonymousState__temp}}" __triggerObserer="{{ _triggerObserer }}" value="{{iconInfo.value}}" color="{{iconInfo.color}}" className="{{iconInfo.className}}" prefixClass="{{iconInfo.prefixClass}}"></at-icon>
                 </view>
             </block>
             <view class="at-list__item-content item-content">
@@ -33,7 +34,8 @@
                     </view>
                 </block>
                 <block wx:if="{{arrow}}">
-                    <view class="item-extra__icon"><text class="{{'at-icon item-extra__icon-arrow at-icon-chevron-' + arrow}}"></text>
+                    <view class="item-extra__icon">
+                        <at-icon customStyle="{{anonymousState__temp2}}" __triggerObserer="{{ _triggerObserer }}" value="{{anonymousState__temp3}}" color="#c7c7cc"></at-icon>
                     </view>
                 </block>
             </view>

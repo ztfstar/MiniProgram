@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
-import Tab1List from '../../component/List/tab1List';
+import Tab1List from '../List/tab1List';
 export default class Index extends Taro.Component {
   constructor () {
     super(...arguments)

@@ -32,8 +32,6 @@ var _component2 = _interopRequireDefault(_component);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -72,6 +70,7 @@ var AtListItem = (_temp2 = _class = function (_AtComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       var _props = this.__props,
@@ -95,18 +94,17 @@ var AtListItem = (_temp2 = _class = function (_AtComponent) {
         'at-list__item--disabled': disabled,
         'at-list__item--no-border': !hasBorder
       }, this.__props.className);
-      var iconClass = (0, _index6.default)(iconInfo.prefixClass || 'at-icon', _defineProperty({}, (iconInfo.prefixClass || 'at-icon') + "-" + iconInfo.value, iconInfo.value), iconInfo.className);
 
-      var anonymousState__temp = iconInfo.value ? (0, _index.internal_inline_style)(this.mergeStyle({
-        color: iconInfo.color || '',
-        fontSize: (iconInfo.size || 24) + "px"
-      }, iconInfo.customStyle)) : null;
+      var anonymousState__temp = iconInfo.value ? this.mergeStyle({ fontSize: (iconInfo.size || 24) + "px" }, iconInfo.customStyle) : null;
+      var anonymousState__temp2 = arrow ? { fontSize: '24px' } : null;
+      var anonymousState__temp3 = arrow ? "chevron-" + arrow : null;
       Object.assign(this.__state, {
         anonymousState__temp: anonymousState__temp,
+        anonymousState__temp2: anonymousState__temp2,
+        anonymousState__temp3: anonymousState__temp3,
         rootClass: rootClass,
         thumb: thumb,
         iconInfo: iconInfo,
-        iconClass: iconClass,
         note: note,
         extraText: extraText,
         extraThumb: extraThumb,
@@ -194,7 +192,7 @@ var AtListItem = (_temp2 = _class = function (_AtComponent) {
 }, _class.$$events = ["handleClick", "handleSwitchClick", "handleSwitchChange"], _initialiseProps = function _initialiseProps() {
   var _this2 = this;
 
-  this.$usedState = ["anonymousState__temp", "rootClass", "thumb", "iconInfo", "iconClass", "note", "extraText", "extraThumb", "isSwitch", "switchColor", "disabled", "switchIsCheck", "arrow", "title", "hasBorder", "className"];
+  this.$usedState = ["anonymousState__temp", "anonymousState__temp2", "anonymousState__temp3", "rootClass", "thumb", "iconInfo", "note", "extraText", "extraThumb", "isSwitch", "switchColor", "disabled", "switchIsCheck", "arrow", "title", "hasBorder", "className"];
 
   this.handleClick = function () {
     for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {

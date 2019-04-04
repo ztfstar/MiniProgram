@@ -1,5 +1,3 @@
-"use strict";
-
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 

@@ -1,5 +1,3 @@
-"use strict";
-
 var baseSlice = require("./_baseSlice.js"),
     isIterateeCall = require("./_isIterateeCall.js"),
     toInteger = require("./toInteger.js");

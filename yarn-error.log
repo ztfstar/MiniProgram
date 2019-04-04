@@ -1,11 +1,11 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add ~taro-ui/dist/style/components/list.scss --silent --no-progress
+  /usr/local/bin/node /usr/local/bin/yarn add taro-ui/dist/style/components/float-layout.scss --silent --no-progress
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhangtengfei9/Desktop/MiniProgram/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhangtengfei9/Desktop/MiniProgram/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhangtengfei9/Desktop/MiniProgram/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhangtengfei9/Desktop/MiniProgram/node_modules/.bin:/Users/zhangtengfei9/Downloads/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/zhangtengfei9/Downloads/flutter/bin:/Users/zhangtengfei9/Library/Android/sdk/tools:/Users/zhangtengfei9/Library/Android/sdk/tools/bin:/Users/zhangtengfei9/Library/Android/sdk/platform-tools:/Users/zhangtengfei9/Library/Android/sdk/emulator:/usr/local/mysql/bin:/Users/zhangtengfei9/Library/Android/sdk/tools:/Users/zhangtengfei9/Library/Android/sdk/tools/bin:/Users/zhangtengfei9/Library/Android/sdk/platform-tools:/Users/zhangtengfei9/Library/Android/sdk/emulator:/usr/local/mysql/bin
 
 Yarn version: 
-  1.12.3
+  1.13.0
 
 Node version: 
   11.2.0
@@ -14,15 +14,15 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: http://registry.m.jd.com/~taro-ui%2fdist/style/components/list.scss: not_found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:65894:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129018:22)
+  Error: https://registry.npm.taobao.org/taro-ui%2fdist/style/components/float-layout.scss: not_found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66255:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129397:22)
       at Request.emit (events.js:182:13)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:129990:10)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130369:10)
       at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:129912:12)
+      at Gunzip.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130291:12)
       at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
+      at Gunzip.emit (events.js:187:15)
       at endReadableNT (_stream_readable.js:1098:12)
       at process.internalTickCallback (internal/process/next_tick.js:72:19)
 
@@ -49,26 +49,33 @@ npm manifest:
   	"author": "",
   	"license": "MIT",
   	"dependencies": {
-  		"@tarojs/components": "1.2.11",
-  		"@tarojs/router": "1.2.11",
-  		"@tarojs/taro": "1.2.11",
-  		"@tarojs/taro-alipay": "1.2.11",
-  		"@tarojs/taro-h5": "1.2.11",
-  		"@tarojs/taro-swan": "1.2.11",
-  		"@tarojs/taro-tt": "1.2.11",
-  		"@tarojs/taro-weapp": "1.2.11",
+  		"@tarojs/async-await": "^1.2.22",
+  		"@tarojs/components": "1.2.9",
+  		"@tarojs/redux": "^1.2.22",
+  		"@tarojs/redux-h5": "^1.2.22",
+  		"@tarojs/router": "1.2.9",
+  		"@tarojs/taro": "1.2.9",
+  		"@tarojs/taro-alipay": "1.2.9",
+  		"@tarojs/taro-h5": "1.2.9",
+  		"@tarojs/taro-swan": "1.2.9",
+  		"@tarojs/taro-tt": "1.2.9",
+  		"@tarojs/taro-weapp": "1.2.9",
   		"nerv-devtools": "^1.3.9",
   		"nervjs": "^1.3.9",
-  		"taro-ui": "^2.0.0"
+  		"node-sass": "^4.11.0",
+  		"redux": "^4.0.1",
+  		"redux-logger": "^3.0.6",
+  		"redux-thunk": "^2.3.0",
+  		"taro-ui": "^1.5.4"
   	},
   	"devDependencies": {
   		"@types/react": "^16.4.6",
   		"@types/webpack-env": "^1.13.6",
-  		"@tarojs/plugin-babel": "1.2.11",
-  		"@tarojs/plugin-csso": "1.2.11",
-  		"@tarojs/plugin-sass": "1.2.11",
-  		"@tarojs/plugin-uglifyjs": "1.2.11",
-  		"@tarojs/webpack-runner": "1.2.11",
+  		"@tarojs/plugin-babel": "1.2.9",
+  		"@tarojs/plugin-csso": "1.2.9",
+  		"@tarojs/plugin-sass": "1.2.2",
+  		"@tarojs/plugin-uglifyjs": "1.2.9",
+  		"@tarojs/webpack-runner": "1.2.9",
   		"babel-plugin-transform-class-properties": "^6.24.1",
   		"babel-plugin-transform-decorators-legacy": "^1.3.4",
   		"babel-plugin-transform-jsx-stylesheet": "^0.6.5",
@@ -76,10 +83,10 @@ npm manifest:
   		"babel-preset-env": "^1.6.1",
   		"babel-eslint": "^8.2.3",
   		"eslint": "^4.19.1",
-  		"eslint-config-taro": "1.2.11",
+  		"eslint-config-taro": "1.2.9",
   		"eslint-plugin-react": "^7.8.2",
   		"eslint-plugin-import": "^2.12.0",
-  		"eslint-plugin-taro": "1.2.11",
+  		"eslint-plugin-taro": "1.2.9",
   		"eslint-plugin-typescript": "^0.12.0",
   		"typescript": "^3.0.1"
   	}
@@ -189,10 +196,10 @@ Lockfile:
       swiper "^4.4.2"
       weui "^1.1.2"
   
-  "@tarojs/plugin-babel@1.2.11":
-    version "1.2.11"
-    resolved "http://registry.npm.taobao.org/@tarojs/plugin-babel/download/@tarojs/plugin-babel-1.2.11.tgz#a735c88e4ecece66d743ccda8ce159598ae417ad"
-    integrity sha1-pzXIjk7OzmbXQ8zajOFZWYrkF60=
+  "@tarojs/plugin-babel@^1.2.22":
+    version "1.2.22"
+    resolved "http://registry.m.jd.com/@tarojs/plugin-babel/download/@tarojs/plugin-babel-1.2.22.tgz#114e61f77cdc43f70834f6821a0dbf631b97ab99"
+    integrity sha1-EU5h93zcQ/cINPaCGg2/YxuXq5k=
     dependencies:
       babel-core "^6.26.0"
   
@@ -210,12 +217,19 @@ Lockfile:
     dependencies:
       node-sass "^4.8.3"
   
-  "@tarojs/plugin-uglifyjs@1.2.11":
-    version "1.2.11"
-    resolved "http://registry.npm.taobao.org/@tarojs/plugin-uglifyjs/download/@tarojs/plugin-uglifyjs-1.2.11.tgz#70bad6d7607ee89a51fda4429c853d1c03641c57"
-    integrity sha1-cLrW12B+6JpR/aRCnIU9HANkHFc=
+  "@tarojs/plugin-uglifyjs@^1.2.22":
+    version "1.2.22"
+    resolved "http://registry.m.jd.com/@tarojs/plugin-uglifyjs/download/@tarojs/plugin-uglifyjs-1.2.22.tgz#ed2199ad47015d8e2713fe1ce3680de207ca15fb"
+    integrity sha1-7SGZrUcBXY4nE/4c42gN4gfKFfs=
     dependencies:
       uglify-js "^3.3.24"
+  
+  "@tarojs/redux@^1.2.22":
+    version "1.2.22"
+    resolved "http://registry.m.jd.com/@tarojs/redux/download/@tarojs/redux-1.2.22.tgz#17c8b9e9b8d615bc81d84a9cd0ac09888c9deffe"
+    integrity sha1-F8i56bjWFbyB2Eqc0KwJiIyd7/4=
+    dependencies:
+      "@tarojs/utils" "1.2.22"
   
   "@tarojs/router@1.2.11":
     version "1.2.11"
@@ -289,6 +303,11 @@ Lockfile:
     version "1.2.11"
     resolved "http://registry.npm.taobao.org/@tarojs/utils/download/@tarojs/utils-1.2.11.tgz#192cb8700d6e94d494a81dad3c4dcc6d6476e57b"
     integrity sha1-GSy4cA1ulNSUqB2tPE3MbWR25Xs=
+  
+  "@tarojs/utils@1.2.22":
+    version "1.2.22"
+    resolved "http://registry.m.jd.com/@tarojs/utils/download/@tarojs/utils-1.2.22.tgz#0b435819905beb45072bcde33d01e93ab9f7a155"
+    integrity sha1-C0NYGZBb60UHK83jPQHpOrn3oVU=
   
   "@tarojs/webpack-runner@1.2.11":
     version "1.2.11"
@@ -1963,15 +1982,15 @@ Lockfile:
       kind-of "^6.0.0"
       shallow-clone "^1.0.0"
   
+  clone@2, clone@^2.1.1:
+    version "2.1.2"
+    resolved "http://registry.m.jd.com/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+    integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
+  
   clone@^1.0.2:
     version "1.0.4"
     resolved "http://registry.npm.taobao.org/clone/download/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
     integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
-  
-  clone@^2.1.1:
-    version "2.1.2"
-    resolved "http://registry.npm.taobao.org/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
-    integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
   
   co@^4.6.0:
     version "4.6.0"
@@ -2421,6 +2440,11 @@ Lockfile:
     version "0.2.0"
     resolved "http://registry.npm.taobao.org/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
     integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  
+  deep-diff@^0.3.5:
+    version "0.3.8"
+    resolved "http://registry.m.jd.com/deep-diff/download/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
+    integrity sha1-wB3mPvsO7JeYgB1Ax+Da4ltYLIQ=
   
   deep-equal@^1.0.1:
     version "1.0.1"
@@ -4652,7 +4676,7 @@ Lockfile:
     resolved "http://registry.npm.taobao.org/long/download/long-3.2.0.tgz#d821b7138ca1cb581c172990ef14db200b5c474b"
     integrity sha1-2CG3E4yhy1gcFymQ7xTbIAtcR0s=
   
-  loose-envify@^1.0.0, loose-envify@^1.3.1:
+  loose-envify@^1.0.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
     version "1.4.0"
     resolved "http://registry.npm.taobao.org/loose-envify/download/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
     integrity sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=
@@ -6084,6 +6108,34 @@ Lockfile:
       indent-string "^2.1.0"
       strip-indent "^1.0.1"
   
+  redux-action@^1.2.2:
+    version "1.2.2"
+    resolved "http://registry.m.jd.com/redux-action/download/redux-action-1.2.2.tgz#213a01ed5c9e48a5167569f9d1861d112c07c5de"
+    integrity sha1-IToB7VyeSKUWdWn50YYdESwHxd4=
+    dependencies:
+      clone "2"
+      uuid "3"
+  
+  redux-logger@^3.0.6:
+    version "3.0.6"
+    resolved "http://registry.m.jd.com/redux-logger/download/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+    integrity sha1-91VZZvMJjzyIYExEnPC69XeCdL8=
+    dependencies:
+      deep-diff "^0.3.5"
+  
+  redux-thunk@^2.3.0:
+    version "2.3.0"
+    resolved "http://registry.m.jd.com/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+    integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
+  
+  redux@^4.0.1:
+    version "4.0.1"
+    resolved "http://registry.m.jd.com/redux/download/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
+    integrity sha1-Q2yubMQPvkcnaJ18j65EgI8b/vU=
+    dependencies:
+      loose-envify "^1.4.0"
+      symbol-observable "^1.2.0"
+  
   regenerate@^1.2.1:
     version "1.4.0"
     resolved "http://registry.npm.taobao.org/regenerate/download/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
@@ -7026,6 +7078,11 @@ Lockfile:
       dom7 "^2.1.2"
       ssr-window "^1.0.1"
   
+  symbol-observable@^1.2.0:
+    version "1.2.0"
+    resolved "http://registry.m.jd.com/symbol-observable/download/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+    integrity sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ=
+  
   table@4.0.2:
     version "4.0.2"
     resolved "http://registry.npm.taobao.org/table/download/table-4.0.2.tgz#a33447375391e766ad34d3486e6e2aedc84d2e36"
@@ -7065,10 +7122,10 @@ Lockfile:
       safe-buffer "^5.1.2"
       yallist "^3.0.2"
   
-  taro-ui@^1.5.4:
-    version "1.5.4"
-    resolved "http://registry.npm.taobao.org/taro-ui/download/taro-ui-1.5.4.tgz#9dae81fdabe86fe27381def19cbc9eca337078b6"
-    integrity sha1-na6B/avob+Jzgd7xnLyeyjNweLY=
+  taro-ui@^2.0.0:
+    version "2.0.2"
+    resolved "http://registry.m.jd.com/taro-ui/download/taro-ui-2.0.2.tgz#178112e81066a77135d7b0da6d68137cff5ddb5c"
+    integrity sha1-F4ES6BBmp3E117DabWgTfP9d21w=
     dependencies:
       "@types/react" "^16.7.3"
       bind-decorator "^1.0.11"
@@ -7413,9 +7470,9 @@ Lockfile:
     resolved "http://registry.npm.taobao.org/utils-merge/download/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
     integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
   
-  uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
+  uuid@3, uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
     version "3.3.2"
-    resolved "http://registry.npm.taobao.org/uuid/download/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
+    resolved "http://registry.m.jd.com/uuid/download/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
     integrity sha1-G0r0lV6zB3xQHCOHL8ZROBFYcTE=
   
   validate-npm-package-license@^3.0.1:

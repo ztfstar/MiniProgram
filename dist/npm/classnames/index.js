@@ -1,7 +1,3 @@
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 /*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -21,7 +17,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var arg = arguments[i];
       if (!arg) continue;
 
-      var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
+      var argType = typeof arg;
 
       if (argType === 'string' || argType === 'number') {
         classes.push(arg);
@@ -45,7 +41,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   if (typeof module !== 'undefined' && module.exports) {
     classNames.default = classNames;
     module.exports = classNames;
-  } else if (typeof define === 'function' && _typeof(define.amd) === 'object' && define.amd) {
+  } else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
     // register as 'classnames', consistent with npm package name
     define('classnames', [], function () {
       return classNames;

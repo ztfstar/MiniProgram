@@ -1,7 +1,3 @@
-"use strict";
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var baseGetTag = require("./_baseGetTag.js"),
     isObjectLike = require("./isObjectLike.js");
 
@@ -26,7 +22,7 @@ var symbolTag = '[object Symbol]';
  * // => false
  */
 function isSymbol(value) {
-  return (typeof value === "undefined" ? "undefined" : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
+  return typeof value == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
 }
 
 module.exports = isSymbol;

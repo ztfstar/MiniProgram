@@ -1,7 +1,5 @@
 'use strict';
 
-var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, '__esModule', { value: true });
 
 if (typeof Object.assign !== 'function') {
@@ -34,13 +32,13 @@ if (typeof Object.assign !== 'function') {
 }
 
 function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
     };
   } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
     };
   }
 
@@ -143,7 +141,7 @@ function _assertThisInitialized(self) {
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (call && ((typeof call === 'undefined' ? 'undefined' : _typeof2(call)) === "object" || typeof call === "function")) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
     return call;
   }
 
@@ -156,9 +154,9 @@ function _toConsumableArray(arr) {
 
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }return arr2;
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
   }
 }
 
@@ -1503,16 +1501,7 @@ var onAndSyncApis = {
   reportAnalytics: true,
   navigateToSmartGameProgram: true,
   // 文件
-  getFileSystemManager: true,
-  getLaunchOptionsSync: true,
-  onPageNotFound: true,
-  onError: true,
-  onAppShow: true,
-  onAppHide: true,
-  offPageNotFound: true,
-  offError: true,
-  offAppShow: true,
-  offAppHide: true
+  getFileSystemManager: true
 };
 var noPromiseApis = {
   // 媒体
@@ -1543,6 +1532,7 @@ var noPromiseApis = {
   showNavigationBarLoading: true,
   hideNavigationBarLoading: true,
   createAnimation: true,
+  pageScrollTo: true,
   createSelectorQuery: true,
   createCanvasContext: true,
   createContext: true,
@@ -1568,10 +1558,8 @@ var otherApis = {
   closeSocket: true,
   // 媒体
   chooseImage: true,
-  chooseMessageFile: true,
   previewImage: true,
   getImageInfo: true,
-  compressImage: true,
   saveImageToPhotosAlbum: true,
   startRecord: true,
   playVoice: true,
@@ -1647,7 +1635,6 @@ var otherApis = {
   setWifiList: true,
   getConnectedWifi: true,
   // 界面
-  pageScrollTo: true,
   showToast: true,
   showLoading: true,
   showModal: true,
@@ -3464,9 +3451,9 @@ function createComponent(ComponentClass, isPage) {
     componentInstance.state = componentInstance._createData() || componentInstance.state;
   } catch (err) {
     if (isPage) {
-      console.warn('[Taro warn] \u8BF7\u7ED9\u9875\u9762\u63D0\u4F9B\u521D\u59CB `state` \u4EE5\u63D0\u9AD8\u521D\u6B21\u6E32\u67D3\u6027\u80FD\uFF01');
+      console.warn("[Taro warn] \u8BF7\u7ED9\u9875\u9762\u63D0\u4F9B\u521D\u59CB `state` \u4EE5\u63D0\u9AD8\u521D\u6B21\u6E32\u67D3\u6027\u80FD\uFF01");
     } else {
-      console.warn('[Taro warn] \u8BF7\u7ED9\u7EC4\u4EF6\u63D0\u4F9B\u4E00\u4E2A `defaultProps` \u4EE5\u63D0\u9AD8\u521D\u6B21\u6E32\u67D3\u6027\u80FD\uFF01');
+      console.warn("[Taro warn] \u8BF7\u7ED9\u7EC4\u4EF6\u63D0\u4F9B\u4E00\u4E2A `defaultProps` \u4EE5\u63D0\u9AD8\u521D\u6B21\u6E32\u67D3\u6027\u80FD\uFF01");
     }
 
     console.warn(err);
@@ -4219,7 +4206,7 @@ function pxTransform(size) {
       deviceRatio = _this$config.deviceRatio;
 
   if (!(designWidth in deviceRatio)) {
-    throw new Error('deviceRatio \u914D\u7F6E\u4E2D\u4E0D\u5B58\u5728 '.concat(designWidth, ' \u7684\u8BBE\u7F6E\uFF01'));
+    throw new Error("deviceRatio \u914D\u7F6E\u4E2D\u4E0D\u5B58\u5728 ".concat(designWidth, " \u7684\u8BBE\u7F6E\uFF01"));
   }
 
   return parseInt(size, 10) / deviceRatio[designWidth] + 'rpx';

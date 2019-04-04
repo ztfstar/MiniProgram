@@ -1,6 +1,4 @@
-"use strict";
-
-var _Symbol = require("./_Symbol.js");
+var Symbol = require("./_Symbol.js");
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -16,7 +14,7 @@ var hasOwnProperty = objectProto.hasOwnProperty;
 var nativeObjectToString = objectProto.toString;
 
 /** Built-in value references. */
-var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 /**
  * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.

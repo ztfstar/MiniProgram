@@ -31,8 +31,6 @@ var _component = require("../../common/component.js");
 
 var _component2 = _interopRequireDefault(_component);
 
-var _utils = require("../../common/utils.js");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55,7 +53,7 @@ var AtFloatLayout = (_temp2 = _class = function (_AtComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtFloatLayout.__proto__ || Object.getPrototypeOf(AtFloatLayout)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["rootClass", "title", "scrollY", "scrollX", "scrollTop", "scrollLeft", "upperThreshold", "lowerThreshold", "scrollWithAnimation", "_isOpened", "isOpened", "className", "children"], _this.handleClose = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtFloatLayout.__proto__ || Object.getPrototypeOf(AtFloatLayout)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "rootClass", "scrollY", "scrollX", "scrollTop", "scrollLeft", "upperThreshold", "lowerThreshold", "scrollWithAnimation", "title", "_isOpened", "className", "isOpened", "children"], _this.handleClose = function () {
       if ((0, _isFunction3.default)(_this.props.onClose)) {
         _this.__triggerPropsFn("onClose", [null].concat([]));
       }
@@ -65,6 +63,7 @@ var AtFloatLayout = (_temp2 = _class = function (_AtComponent) {
       }, _this.handleClose);
     }, _this.handleTouchMove = function (e) {
       e.stopPropagation();
+      e.preventDefault();
     }, _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -84,15 +83,11 @@ var AtFloatLayout = (_temp2 = _class = function (_AtComponent) {
     value: function componentWillReceiveProps(nextProps) {
       var isOpened = nextProps.isOpened;
 
-
-      if (this.props.isOpened !== isOpened) {
-        (0, _utils.handleTouchScroll)(isOpened);
-      }
-
       if (isOpened !== this.state._isOpened) {
         this.setState({
           _isOpened: isOpened
         });
+        // !isOpened && this.handleClose()
       }
     }
   }, {
@@ -100,6 +95,7 @@ var AtFloatLayout = (_temp2 = _class = function (_AtComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       var _isOpened = this.__state._isOpened;
@@ -118,42 +114,40 @@ var AtFloatLayout = (_temp2 = _class = function (_AtComponent) {
         'at-float-layout--active': _isOpened
       }, this.__props.className);
 
+      var anonymousState__temp = { fontSize: '18px' };
       Object.assign(this.__state, {
+        anonymousState__temp: anonymousState__temp,
         rootClass: rootClass,
-        title: title,
         scrollY: scrollY,
         scrollX: scrollX,
         scrollTop: scrollTop,
         scrollLeft: scrollLeft,
         upperThreshold: upperThreshold,
         lowerThreshold: lowerThreshold,
-        scrollWithAnimation: scrollWithAnimation
+        scrollWithAnimation: scrollWithAnimation,
+        title: title
       });
       return this.__state;
     }
   }, {
-    key: "funPrivatepjacF",
-    value: function funPrivatepjacF() {
+    key: "funPrivateBNiiU",
+    value: function funPrivateBNiiU() {
       this.__triggerPropsFn("onScroll", [].concat(Array.prototype.slice.call(arguments)));
     }
   }, {
-    key: "funPrivategVXfQ",
-    value: function funPrivategVXfQ() {
+    key: "funPrivateAIJKP",
+    value: function funPrivateAIJKP() {
       this.__triggerPropsFn("onScrollToLower", [].concat(Array.prototype.slice.call(arguments)));
     }
   }, {
-    key: "funPrivateTNxSo",
-    value: function funPrivateTNxSo() {
+    key: "funPrivaterRnIP",
+    value: function funPrivaterRnIP() {
       this.__triggerPropsFn("onScrollToUpper", [].concat(Array.prototype.slice.call(arguments)));
     }
   }]);
 
   return AtFloatLayout;
 }(_component2.default), _class.properties = {
-  "isOpened": {
-    "type": null,
-    "value": null
-  },
   "onClose": {
     "type": null,
     "value": null
@@ -221,8 +215,12 @@ var AtFloatLayout = (_temp2 = _class = function (_AtComponent) {
   "__fn_onScrollToUpper": {
     "type": null,
     "value": null
+  },
+  "isOpened": {
+    "type": null,
+    "value": null
   }
-}, _class.$$events = ["handleTouchMove", "close", "funPrivatepjacF", "funPrivategVXfQ", "funPrivateTNxSo"], _temp2);
+}, _class.$$events = ["handleTouchMove", "close", "funPrivateBNiiU", "funPrivateAIJKP", "funPrivaterRnIP"], _temp2);
 
 
 AtFloatLayout.defaultProps = {
@@ -242,6 +240,7 @@ AtFloatLayout.defaultProps = {
 AtFloatLayout.propType = {
   title: _index4.default.string,
   isOpened: _index4.default.bool,
+
   scrollY: _index4.default.bool,
   scrollX: _index4.default.bool,
   scrollTop: _index4.default.number,
@@ -249,6 +248,7 @@ AtFloatLayout.propType = {
   upperThreshold: _index4.default.number,
   lowerThreshold: _index4.default.number,
   scrollWithAnimation: _index4.default.bool,
+
   onClose: _index4.default.func,
   onScroll: _index4.default.func,
   onScrollToLower: _index4.default.func,

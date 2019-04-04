@@ -1484,10 +1484,12 @@ var PageRadio = (_temp2 = _class = function (_BaseComponent) {
       }
       _this.setState({
         totalScore: Number(xueli) + Number(xuexiao) + Number(chengji) + Number(yingyu) + Number(jisuanji) + Number(itemPicker) + Number(checkBox1) + Number(checkBox2)
+      }, function () {
+        return _this.props.getScore(_this.state.totalScore);
       });
-      setTimeout(function () {
-        _this.props.getScore(_this.state.totalScore);
-      }, 500);
+      // setTimeout(() => {
+      //   this.props.getScore(this.state.totalScore)
+      // }, 500);
     }, _this.getItemPick = function (itemPick1, itemPick2) {
       itemPicker = itemPick1 + itemPick2;
       _this.setState({
@@ -1580,10 +1582,12 @@ var PageRadio = (_temp2 = _class = function (_BaseComponent) {
       _this.handleClose();
       _this.setState({
         totalScore: Number(xueli) + Number(xuexiao) + Number(chengji) + Number(yingyu) + Number(jisuanji) + Number(itemPicker) + Number(checkBox1) + Number(checkBox2)
+      }, function () {
+        return _this.props.getScore(Number(_this.state.totalScore));
       });
-      setTimeout(function () {
-        _this.props.getScore(Number(_this.state.totalScore));
-      }, 500);
+      // setTimeout(() => {
+      //   console.log('hello')
+      // },500);
     }, _this.anonymousFunc1Array = [], _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -1804,6 +1808,7 @@ var PageRadio = (_temp2 = _class = function (_BaseComponent) {
 
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       this.anonymousFunc0 = function () {

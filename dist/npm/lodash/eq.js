@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * Performs a
  * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)

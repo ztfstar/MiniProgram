@@ -37,10 +37,11 @@ var discovery = (_temp2 = _class = function (_BaseComponent) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = discovery.__proto__ || Object.getPrototypeOf(discovery)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.tobegin = function (userInfo) {
-      // console.log(userInfo)
+      console.log(userInfo);
+      //Taro.authorize(params).then(...)
       _index2.default.setStorage({ key: userInfo.detail.userInfo.nickName, data: userInfo.detail.rawData });
       _index2.default.getStorage({ key: userInfo.detail.userInfo.nickName }).then(function (res) {
-        return console.log(res.data);
+        return console.log(res);
       });
     }, _this.$$refs = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -55,14 +56,52 @@ var discovery = (_temp2 = _class = function (_BaseComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
+
+      this.anonymousFunc0 = function () {
+        _index2.default.login({
+          success: function success(res) {
+            console.log(res);
+            if (res.code) {
+              //发起网络请求
+              _index2.default.request({
+                url: 'http://127.0.0.1:3000/login',
+                data: {
+                  js_code: res.code,
+                  appid: 'wxe70f7da720941f21',
+                  secret: 'f4c9b6d7b1599ab564ef3af44ac0e345',
+                  grant_type: 'authorization_code'
+                }
+              });
+            } else {
+              console.log('登录失败');
+            }
+          },
+          fail: function fail() {
+            console.log("启用login函数，失败！");
+          },
+          complete: function complete() {
+            console.log("已启用login函数");
+          }
+        });
+      };
+      // let s= '011K8KAT15IWd51pTXAT1OmGAT1K8KAL';
+      // let s= '021sqVf41znkWS16ZEe41jlOf41sqVfS'
+
+
       Object.assign(this.__state, {});
       return this.__state;
+    }
+  }, {
+    key: "anonymousFunc0",
+    value: function anonymousFunc0(e) {
+      ;
     }
   }]);
 
   return discovery;
-}(_index.Component), _class.properties = {}, _class.$$events = ["tobegin"], _temp2);
+}(_index.Component), _class.properties = {}, _class.$$events = ["tobegin", "anonymousFunc0"], _temp2);
 exports.default = discovery;
 
 Component(require('../../npm/@tarojs/taro-weapp/index.js').default.createComponent(discovery, true));

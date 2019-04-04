@@ -53,7 +53,7 @@
                     </view>
                     <view class="example-body__radios">
                         <checkbox-group name="addScore1" bindchange="addScore1Change" id="sigcheckbox">
-                            <label class="checkbox-list__label" for="{{item.value}}" wx:key="value" wx:for="{{addScore1List}}" wx:for-item="item">
+                            <label class="checkbox-list__label" for="{{item.value}}" wx:key="value" wx:for="{{addScore1List}}" wx:for-item="item" wx:for-index="_anonIdx">
                                 <checkbox style="padding-top:5px" class="checkbox-list__checkbox" value="{{item.value}}" checked="{{item.checked}}">{{item.text}}
                                     <view><text class="text-checkBox">{{item.desc}}</text>
                                     </view>

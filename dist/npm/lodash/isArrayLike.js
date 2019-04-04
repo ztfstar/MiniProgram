@@ -1,5 +1,3 @@
-"use strict";
-
 var isFunction = require("./isFunction.js"),
     isLength = require("./isLength.js");
 

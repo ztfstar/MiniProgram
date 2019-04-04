@@ -61,6 +61,7 @@ var AtTabsPane = (_temp2 = _class = function (_AtComponent) {
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
+      var __runloopRef = arguments[2];
       ;
 
       var _props = this.__props,
@@ -108,24 +109,19 @@ var AtTabsPane = (_temp2 = _class = function (_AtComponent) {
     "type": null,
     "value": null
   }
-}, _class.$$events = [], _temp2);
-
-
-AtTabsPane.defaultProps = {
+}, _class.$$events = [], _class.defaultProps = {
   customStyle: '',
   className: '',
   tabDirection: 'horizontal',
   index: 0,
   current: 0
-};
-
-AtTabsPane.propTypes = {
+}, _class.propTypes = {
   customStyle: _index4.default.oneOfType([_index4.default.object, _index4.default.string]),
   className: _index4.default.oneOfType([_index4.default.array, _index4.default.string]),
   tabDirection: _index4.default.oneOf(['horizontal', 'vertical']),
   index: _index4.default.number,
   current: _index4.default.number
-};
+}, _temp2);
 exports.default = AtTabsPane;
 
 Component(require('../../../../../@tarojs/taro-weapp/index.js').default.createComponent(AtTabsPane));

@@ -229,11 +229,11 @@ export default class PageRadio extends Component {
     this.setState({
       totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
       Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
-    })
-
-    setTimeout(() => {
-      this.props.getScore(this.state.totalScore)
-    }, 500);
+    },()=>this.props.getScore(this.state.totalScore))
+    
+    // setTimeout(() => {
+    //   this.props.getScore(this.state.totalScore)
+    // }, 500);
 
    }
   
@@ -285,7 +285,7 @@ export default class PageRadio extends Component {
       Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
     })
     setTimeout(() => {
-      this.props.getScore(Number(this.state.totalScore)
+      this.props.getScore(Number(this.state.totalScore))
     },500);
   }
 
@@ -307,7 +307,7 @@ export default class PageRadio extends Component {
       Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
     })
     setTimeout(() => {
-      this.props.getScore(Number(this.state.totalScore)
+      this.props.getScore(Number(this.state.totalScore))
     },500);
      
   }
@@ -667,10 +667,11 @@ export default class PageRadio extends Component {
     this.setState({
       totalScore : Number(xueli) + Number(xuexiao) + Number(chengji) + 
       Number(yingyu) + Number(jisuanji)+Number(itemPicker)+Number(checkBox1)+Number(checkBox2)
-    })
-    setTimeout(() => {
-      this.props.getScore(Number(this.state.totalScore)
-    },500);
+    },()=>this.props.getScore(Number(this.state.totalScore)))
+    // setTimeout(() => {
+    //   console.log('hello')
+      
+    // },500);
   }
 
 }
