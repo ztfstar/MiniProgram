@@ -11,7 +11,7 @@ import {
 
   export const fetchPosts=()=> {
     Taro.request({
-      url: 'http://127.0.0.1:3000/post',
+      url: 'http://118.25.173.153:3000/post',
       data: {
         foo: 'foo',
         bar: 10

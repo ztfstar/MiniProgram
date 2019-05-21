@@ -16,7 +16,6 @@ import {
 } from '@tarojs/components'
 import { AtFloatLayout ,AtToast,AtNoticebar}  from 'taro-ui'
 import './live.scss'
-import gzh from './gzh.jpg'
 // import { Text, Image } from '@tarojs/components';
 export default class PageForm extends Component {
 

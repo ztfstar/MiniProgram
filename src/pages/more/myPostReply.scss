@@ -1,0 +1,58 @@
+.container{
+    margin: 25px 35px 25px 35px;
+}
+
+.header{
+    display: flex;
+    border-bottom:1px solid #d9d9d9;    
+}
+.replyBody{
+    margin: 25px 2px 25px 2px;
+}
+
+.title{
+    margin: 25px 2px 25px 2px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin-top: 20px;
+    color:#404040
+}
+
+.replyList{
+    margin-top: 60px;
+    padding-bottom: 100px
+}
+
+.replyHeader{
+    display: flex;
+    flex-direction: row
+}
+
+.username{
+    font-family: 'Courier New', Courier, monospace;
+    font-size:29px;
+    font-weight: 500;
+    margin-left: 10px
+}
+
+.touxiang{
+    height: 60px;
+    width: 60px;
+    border-radius: 10px
+}
+
+.replyContent{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 29px;
+    margin-left: 0px
+}
+
+.replyBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.replyBtnIcon{
+    width: 40px;
+    height: 40px;
+}

@@ -1,6 +1,5 @@
 import Taro,{ Component,  } from '@tarojs/taro'
 import { AtList, AtListItem } from "taro-ui"
-//import "./tab1.scss";
 
 import tab1Data from './tab1.json' 
 import { View } from '@tarojs/components';
@@ -50,6 +49,7 @@ export default class Tab1List extends Component {
    
 
     _onClick=({item})=>{
+        console.log('article',item)
         let id = item.id;
         Taro.navigateTo({url:`/pages/component/article/article?id=${id}`})
     }

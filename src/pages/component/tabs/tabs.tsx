@@ -15,7 +15,7 @@ export default class Index extends Taro.Component {
     })
   }
   render () {
-    const tabList = [{ title: '要闻' }, { title: '酷工作' }, { title: '交易' }]
+    const tabList = [{ title: '要闻' }, { title: '观点' }]
     return (
       <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
         <AtTabsPane current={this.state.current} index={0} >

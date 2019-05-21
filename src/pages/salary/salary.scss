@@ -1,0 +1,79 @@
+.container{
+    margin: 0px 0px 0px 0px;
+    background-color: #fafafa;
+}
+.header{
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    align-items: flex-start;
+    background-color: #0068C4;
+    padding-top: 20px 
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    color: #ffffff
+}
+.taxbox{
+    margin-top: 65px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size :26px;
+    bottom: 0px
+}
+.salary{
+    color:#ffffff
+}
+.item{
+    color: #ffffff;
+}
+.formBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.salaryBox{
+    border:1px solid #d9d9d9;
+    background-color: '#ffffff';
+    margin-top: 0px;
+    border-radius: 10px;
+    padding: 15px
+}
+.socialBox{
+    border:1px solid #d9d9d9;
+    background-color: '#ffffff';
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 15px
+}
+.socialBaseType{
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: '#ffffff'
+}
+.publicBox{
+    border:1px solid #d9d9d9;
+    background-color: '#ffffff';
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 15px
+}
+.itemText{
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(56, 56, 56)  
+}
+.buttonBox{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}

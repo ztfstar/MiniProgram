@@ -1,8 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
-import { View,Image,Text,Button} from '@tarojs/components'
 import { Provider } from '@tarojs/redux'
-
+import '@tarojs/async-await'
 import configStore from './redux/store'
 const store = configStore()
 //import './app.scss'
@@ -32,8 +31,17 @@ class App extends Component {
       'pages/component/article/article',
       'pages/live/live',//居转户页面
       'pages/discuss/addPost',//发帖子
-      'pages/discuss/postDetail'//帖子回复
+      'pages/discuss/postDetail',//帖子回复
+      'pages/discuss/discuss',
+      'pages/discuss/reply',//回复列表页
+      'pages/more/suggestion',//意见反馈 
+      'pages/more/myPost',//我的帖子
+      'pages/more/myPostDetail', //我的帖子>我的帖子列表
+      'pages/more/myPostReply', //我的帖子>我的帖子列表
+      'pages/more/myMessage', //@我的
+      // 'pages/more/MyPostReply',
 
+      'pages/salary/salary'//税后工资计算器
       
     ],
     window: {
@@ -70,27 +78,12 @@ class App extends Component {
 
 
   componentDidMount () {
-    // Taro.login().then(
-    //   ()=>{Taro.getUserInfo().then((res)=>{
-    //     console.log(res)
-    //   })}
-    // )
-    // Taro.login({
-    //   success(res) {
-    //     if (res.code) {
-    //       // 发起网络请求
-    //       Taro.request({
-    //         url: 'https://test.com/onLogin',
-    //         data: {
-    //           code: res.code
-    //         }
-    //       })
-    //     } else {
-    //       console.log('登录失败！' + res.errMsg)
-    //     }
-    //   }
-    // })
-  }
+    Taro.showShareMenu({
+      withShareTicket: true
+    })
+    // Taro.clearStorageSync()
+    // Taro.clearStorage()
+   }
 
   componentDidShow () {}
 
@@ -103,13 +96,9 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
+      
         <Index />
       </Provider>
-      // <View>
-      //   <Index/>
-      // </View>
-      
-      
     )
   }
 

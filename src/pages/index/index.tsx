@@ -1,10 +1,15 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View,ScrollView,Button} from '@tarojs/components';
+import { View,ScrollView,Button,WebView} from '@tarojs/components';
 import Banner from '../component/swiper'
 import { AtGrid } from "taro-ui"
 import Tabs from '../component/tabs/tabs'
-
+import graduate from './img/graduate.svg'
+import money from './img/money.svg'
+import other from './img/other.svg'
+import liuxue from './img/liuxue.svg'
+import chuangyi from './img/chuangyi.svg'
 //import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
+import '@tarojs/async-await'
 
 export default class Index extends Component {
 
@@ -33,27 +38,39 @@ export default class Index extends Component {
   render(){
     return(
          <View>
+            
             <View ><Banner /></View>
             <View>
                 <AtGrid 
                     onClick={(item,index)=>{
                         let url = ''
+                        console.log('index',index)
                         switch(index){
                             case 0:
                             url = '/pages/calculator/calculator';
                             break
+                            case 1:
+                            url= `/pages/component/article/article?id=${'liuxuesheng'}`
+                            break
                             case 2:
                             url = '/pages/live/live'
+                            break
+                            case 3:
+                            url=`/pages/component/article/article?id=${'other'}`
+                            break
+                            case 4:
+                            url='/pages/salary/salary'
+                            break
                         }
                         
                     Taro.navigateTo({url:url})}}
                     data={[
                         {
-                        image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
+                        image: graduate,
                         value: '应届生落户'
                         },
                         {
-                        image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
+                        image: liuxue,
                         value: '留学生落户'
                         },
                         {
@@ -61,16 +78,16 @@ export default class Index extends Component {
                         value: '居转户'
                         },
                         {
-                        image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png',
+                        image: other,
+                        value: '其他落户'
+                        },
+                        {
+                        image: money,
                         value: '税后工资计算'
                         },
                         {
-                        image: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',
-                        value: '人才引进落户'
-                        },
-                        {
-                        image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                        value: '投靠落户方式'
+                        image: chuangyi,
+                        value: '创意'
                         }
                     ]
                 } />

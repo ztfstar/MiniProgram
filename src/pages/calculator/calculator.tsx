@@ -30,15 +30,17 @@ export default class Calculator extends Component {
     this.setState({
       score:0
     })
+    Taro.showShareMenu({
+      withShareTicket: true
+    })
   }
-
+ 
   
 
 render () {
     return (
       
       <View className='container'>
-
         <View className='page-body' >
          <Radio1 getScore={score=>this.getScore(score)}/>
         </View>

@@ -1,11 +1,11 @@
 
 import Taro, { Component, saveImageToPhotosAlbum, getCurrentPages } from '@tarojs/taro'
-import { View, Text, Radio, Label, RadioGroup ,Picker,CheckboxGroup,Checkbox} from '@tarojs/components'
+import { View, Text, Radio, Label, RadioGroup, Picker, CheckboxGroup, Checkbox, Image } from '@tarojs/components';
 import Picker1 from '../picker/picker'
 import './radio.scss'
 import zhuanye from './zhuanye.json'
 import { AtFloatLayout,AtSearchBar,AtList, AtListItem } from "taro-ui"
-
+import clickImg from './click.svg'
 
 let xueli = 0,xuexiao = 0,chengji =0,yingyu =0,jisuanji =0,itemPicker=0,
 itemPick1=0,itemPick2=0,checkBox1=0,checkBox2=0,checkBox=0;
@@ -170,7 +170,7 @@ export default class PageRadio extends Component {
       },
       {
         value: '3',
-        text: '引进重点领域人才（上海市重点发展领域所需学科 3分）',
+        text: '引进重点领域人才-上海市重点发展领域所需学科（3分）',
         checked: false,
         desc: '用人单位录用上海市重点发展领域所需学科毕业生',
       },
@@ -400,8 +400,8 @@ export default class PageRadio extends Component {
             </View>
             
               <View className='example-body__radios'>
-                <View style='background-color:#6190e8'  onClick={()=>{Taro.navigateTo({url:'/pages/component/atIndex/atIndex'})}}>
-                  <Text className='seeMore'>点击查看第一类、第二类高校及研究生培养单位</Text>
+                <View  className='seemoreBox'  onClick={()=>{Taro.navigateTo({url:'/pages/component/atIndex/atIndex'})}}>
+                  <Text className='seeMore'>点击查看第一类、第二类高校及研究生培养单位</Text><Image style='height:40px;width:40px' src={clickImg}/>
                 </View>
                 <RadioGroup onChange={this.radioChange} id='xuexiao'>
                   {this.state.schoolList.map((item, i) => {
@@ -552,9 +552,9 @@ export default class PageRadio extends Component {
                           className='checkbox-list__label'
                           for={item.value}
                           key={item.value}>  
-                          {index == 1? <View style='background-color:#6190e8' onClick={this.employerClick}>
-                            <Text className='seeMore'>点击查看上海市重点领域发展所需学科</Text>
-                          
+                          {index == 1? <View style='background-color:#6190e8' className='seemoreBox' onClick={this.employerClick}>
+                            <Text className='seeMore'>点击搜索上海市重点领域发展所需学科</Text>
+                            <Image style='height:40px;width:40px' src={clickImg}/>
                           </View> :  null}                                            
                           <Checkbox
                             className='checkbox-list__checkbox'

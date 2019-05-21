@@ -1,9 +1,9 @@
 import Taro, { Component ,PureComponent} from '@tarojs/taro'
-import { View, Button, Image, Text ,Form,Input} from '@tarojs/components';
+import { View, Button, Image, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux'
-import { AtButton,AtInput,AtForm,AtToast} from 'taro-ui';
+import { AtButton,AtInput} from 'taro-ui';
 import isEmpty from 'lodash/isEmpty';//为空判断
-import './postDetail.scss'
+import './myPostDetail.scss'
 import { fetchPosts,addCommit,getCommit,getReply} from '../../redux/actions'
 import replyBtn from './replyBtn.svg'
 let commitObj={
@@ -33,7 +33,7 @@ let commitObj={
     }
   }))
 
-export default class PostIndex extends PureComponent {
+export default class MyPostDetail extends PureComponent {
     
    
     commitContent=''
@@ -43,8 +43,7 @@ export default class PostIndex extends PureComponent {
         props.post={}
         this.state = {
             commitInput:'',
-            access_token:'',
-            toast:false
+            access_token:''
         }
       }
       static defaultProps = {
@@ -123,12 +122,12 @@ export default class PostIndex extends PureComponent {
                         let replyTwo=[];//每个评论的前两个回复
                         replyList&&replyList.map((itemReply)=>{
                             if(replyTwo.length<2&&itemReply.commitId === item._id){  
-                                //console.log('commit itemReply',itemReply)
+                                console.log('commit itemReply',itemReply)
                                 replyTwo.push(itemReply)
                             }
                         })
                         if(!isEmpty(replyTwo)){
-                            //console.log('commit replyTwo',replyTwo)
+                            console.log('commit replyTwo',replyTwo)
                         }
                         return (
                             <View className='commitbody'>
@@ -139,12 +138,12 @@ export default class PostIndex extends PureComponent {
                                         {item.createTime&&<Text className='time'>{item.createTime}</Text>}
                                     </View>
                                     <Text onClick={
-                                    ()=>{Taro.navigateTo({url:`/pages/discuss/reply?commitId=${item._id}&postId=${postId}`})}}  className='commit'>{item.content}</Text>
+                                    ()=>{Taro.navigateTo({url:`/pages/more/myPostReply?commitId=${item._id}&postId=${postId}`})}}  className='commit'>{item.content}</Text>
                                 </View>
                             
                                 {!isEmpty(replyTwo)?
                                 <View className='replyBody' onClick={
-                                    ()=>{Taro.navigateTo({url:`/pages/discuss/reply?commitId=${item._id}&postId=${postId}`})}}>
+                                    ()=>{Taro.navigateTo({url:`/pages/more/myPostReply?commitId=${item._id}&postId=${postId}`})}}>
                                     <View>
                                         <View className='replyList'>
                                             <Text className='replyUser'>{JSON.parse(replyTwo[0].user).nickName}:</Text>
@@ -158,7 +157,7 @@ export default class PostIndex extends PureComponent {
                                     <View className='seeMoreBox'><Text className='seeMore'>查看更多</Text> <Image className='replyBtnIcon'  src={replyBtn}/></View>
                                 </View>:
                                 <View className='replyBtn' onClick={
-                                    ()=>{Taro.navigateTo({url:`/pages/discuss/reply?commitId=${item._id}&postId=${postId}`})}}>
+                                    ()=>{Taro.navigateTo({url:`/pages/more/myPostReply?commitId=${item._id}&postId=${postId}`})}}>
                                     <Image className='replyBtnIcon'  src={replyBtn}/>
                                 </View>}
                             </View>
@@ -166,10 +165,10 @@ export default class PostIndex extends PureComponent {
                     })}
                 </View>
                
-                <AtToast isOpened={this.state.toast} text="请登录！" icon="{icon}"></AtToast>
+
                 <View style='position:fixed;bottom:0px;width:375px'>
                     <AtForm customStyle='display: flex;flex-direction: row;justify-content: flex-start;align-items: center;'
-                          onSubmit={this.formSubmit.bind(this)} reportSubmit={true} onReset={this.formReset.bind(this)} >
+                          onSubmit={this.formSubmit} reportSubmit={true} onReset={this.formReset} >
                             <AtInput
                                 customStyle='width:250px'
                                 name='value'
@@ -178,11 +177,10 @@ export default class PostIndex extends PureComponent {
                                 value={this.state.commitInput}
                                 onChange={this.inputChange.bind(this)}
                                 border={true}
-                                clear={true}
                                 adjustPosition={true}
                             />                    
-                        <AtButton type='primary' customStyle='position:absolute;bottom:10px;left:260px' size='small' formType='submit' 
-                                onClick={()=>{
+                        <AtButton type='primary' customStyle='position:absolute;bottom:10px;left:260px' size='small' formType='submit'
+                                  onClick={()=>{
                                     if(Taro.getStorageSync('user')){
                                         this.props.addCommit(commitObj);
                                     }else{
@@ -209,7 +207,7 @@ export default class PostIndex extends PureComponent {
     let user = Taro.getStorageSync('user').nickName
     let toUser = JSON.parse(that.props.post.postList[0].user).openid
     let postId = that.props.post.postList[0]._id;
-    //console.log('formSubmit postId',postId)
+    console.log('formSubmit postId',postId)
     let data = {
       touser: toUser,
       template_id: 'jI7aXGMmdMfv5B6CgA_ZIHn8IlTliMxoMK_V-Yrj2Mk',//这个是1、申请的模板消息id，  
@@ -250,8 +248,7 @@ export default class PostIndex extends PureComponent {
      })
    }
    formReset = e => {
-    console.log('formReset',e,this)
-    
+    console.log(e)
   }
 
 }
